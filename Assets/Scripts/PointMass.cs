@@ -4,11 +4,11 @@ public class PointMass : MonoBehaviour {
 
     [SerializeField] private bool m_ShowNormalGizmo;
 
-    public Vector3 Position { 
+    public Vector2 Position { 
         get {
-            if (!Application.isPlaying)
+            if (m_MassRb == null)
                 return transform.position;
-            return m_Transform.position;
+            return m_MassRb.position;
         }
     }
 
@@ -32,11 +32,15 @@ public class PointMass : MonoBehaviour {
         m_MassRb.AddForce(force);
     }
 
+    public void TranslateRb(Vector2 displacement) {
+        m_MassRb.position += displacement;
+    }
+
     private void OnDrawGizmos() {
         if (!m_ShowNormalGizmo) 
             return;
 
         Gizmos.color = Color.blue;
-        Gizmos.DrawLine(Position, Position + (DebugNormalForce));
+        Gizmos.DrawLine(Position, (Vector3)Position + (DebugNormalForce));
     }
 }

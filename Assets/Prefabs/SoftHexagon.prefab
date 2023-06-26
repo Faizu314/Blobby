@@ -1467,29 +1467,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4afa17cdfefd35a41a1d3c43d7495206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PointMasses: []
+  m_PointMasses:
+  - {fileID: 1669869665}
+  - {fileID: 544680674}
+  - {fileID: 70986808}
+  - {fileID: 1246357490}
+  - {fileID: 1759595602}
+  - {fileID: 1132574650}
   m_MidMass: {fileID: 4321568946199174259}
+  m_DevRateOfChange: 0.5
   m_PressureConstant: 8
   m_FrameForceByDistSqr:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: -0.021316528
       value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      inSlope: 1.0587834
+      outSlope: 1.0587834
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0.31548235
     - serializedVersion: 3
-      time: 100
-      value: 100
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      time: 4
+      value: 4.522919
+      inSlope: 1.3063794
+      outSlope: 6.586173
+      tangentMode: 1
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0.2414013
+      outWeight: 0.21748948
+    - serializedVersion: 3
+      time: 6
+      value: 20
+      inSlope: 7.1759963
+      outSlope: 7.1759963
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.15884161
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1528,10 +1544,11 @@ MonoBehaviour:
   - {fileID: 952961525175779488}
   m_MassesDamping: 0.3
   m_MassesFrequency: 3
-  m_EdgesDamping: 0.3
+  m_EdgesDamping: 1
   m_EdgesFrequency: 5
   m_MassesLinearDrag: 0.2
   m_UpdateSettingsEveryFrame: 0
+  m_ShowRPoints: 0
   PointMassesDeviation: 0
 --- !u!1 &4321568945924678475
 GameObject:
