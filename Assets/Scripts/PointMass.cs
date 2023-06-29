@@ -3,6 +3,7 @@ using UnityEngine;
 public class PointMass : MonoBehaviour {
 
     [SerializeField] private bool m_ShowNormalGizmo;
+    [SerializeField] private bool m_ShowFrameGizmo;
 
     public Vector2 Position { 
         get {
@@ -14,8 +15,10 @@ public class PointMass : MonoBehaviour {
 
     private Transform m_Transform;
     private Rigidbody2D m_MassRb;
+    public Rigidbody2D Rb => m_MassRb;
 
     private Vector3 DebugNormalForce;
+    private Vector3 DebugFrameForce;
 
     private void Awake()
     {
@@ -28,19 +31,14 @@ public class PointMass : MonoBehaviour {
         m_MassRb.AddForce(force);
     }
 
-    public void ApplyReferenceFrameForce(Vector2 force) {
-        m_MassRb.AddForce(force);
-    }
-
-    public void TranslateRb(Vector2 displacement) {
-        m_MassRb.position += displacement;
-    }
-
     private void OnDrawGizmos() {
-        if (!m_ShowNormalGizmo) 
-            return;
-
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(Position, (Vector3)Position + (DebugNormalForce));
+        if (m_ShowNormalGizmo) { 
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(Position, (Vector3)Position + (DebugNormalForce));
+        }
+        if (m_ShowFrameGizmo) {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawLine(Position, (Vector3)Position + (DebugFrameForce));
+        }
     }
 }

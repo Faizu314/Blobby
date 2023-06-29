@@ -21,10 +21,8 @@ public class PointMassesControllerEditor : Editor
         if (GUILayout.Button("Find Joints")) {
             var allJoints = Target.GetComponentsInChildren<SpringJoint2D>();
 
-            if (Target.m_BetweenPointMasses == null)
-                Target.m_BetweenPointMasses = new();
-            if (Target.m_MassesToEdges == null)
-                Target.m_MassesToEdges = new();
+            //Target.m_BetweenPointMasses = new();
+            //Target.m_MassesToEdges = new();
 
             foreach (var joint in allJoints) {
                 if (!joint.enableCollision)

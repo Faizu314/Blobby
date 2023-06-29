@@ -6,20 +6,29 @@ public class SoftCarController : MonoBehaviour
     [SerializeField] private PointMassesController m_LeftWheelController;
     [SerializeField] private PointMassesController m_RightWheelController;
 
-    [SerializeField] private SpringJoint2D m_LeftWheelFixedJoint;
-    [SerializeField] private SpringJoint2D m_RightWheelFixedJoint;
+    [SerializeField] private float Speed;
 
-    private Vector2 GetLeftWheelPosition() {
-        return (m_BodyController.GetReferencePointPos(10) +
-            m_BodyController.GetReferencePointPos(11)) / 2f;
-    }
-    private Vector2 GetRightWheelPosition() {
-        return (m_BodyController.GetReferencePointPos(8) +
-            m_BodyController.GetReferencePointPos(9)) / 2f;
+    private InputActions m_Input;
+    private Coroutine m_MovementCoroutine = null;
+
+    private void Start() {
+        m_Input = new InputActions();
+
+        m_Input.Movement.Enable();
     }
 
     private void FixedUpdate() {
-        m_LeftWheelFixedJoint.connectedAnchor = GetLeftWheelPosition();
-        m_RightWheelFixedJoint.connectedAnchor = GetRightWheelPosition();
+        if (m_Input.Movement.Forward.IsPressed()) {
+            MoveForward(Speed);
+        }
+        else if (m_Input.Movement.Backward.IsPressed())
+            MoveForward(-Speed);
     }
+
+
+    private void MoveForward(float amount) {
+        m_LeftWheelController.ApplyTorque(amount);
+        m_RightWheelController.ApplyTorque(amount);
+    }
+
 }
