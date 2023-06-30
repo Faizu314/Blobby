@@ -12,6 +12,7 @@ public class FollowPosition : MonoBehaviour
 
     private void Start() {
         m_Transform = transform;
+        m_BoneBaseRot = Util.AngleFromVector(m_MidMass.position - m_MassToFollow.position);
     }
 
     private void Update() {

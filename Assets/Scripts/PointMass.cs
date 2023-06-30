@@ -13,22 +13,26 @@ public class PointMass : MonoBehaviour {
         }
     }
 
-    private Transform m_Transform;
     private Rigidbody2D m_MassRb;
     public Rigidbody2D Rb => m_MassRb;
+    private CircleCollider2D m_Collider;
 
     private Vector3 DebugNormalForce;
     private Vector3 DebugFrameForce;
 
     private void Awake()
     {
-        m_Transform = transform;
-        m_MassRb = m_Transform.GetComponent<Rigidbody2D>();
+        m_MassRb = GetComponent<Rigidbody2D>();
+        m_Collider = GetComponent<CircleCollider2D>();
     }
 
     public void ApplyNormalForce(Vector2 force) {
         DebugNormalForce = force;
         m_MassRb.AddForce(force);
+    }
+
+    public void SetCollision(bool enabled) {
+        m_Collider.enabled = enabled;
     }
 
     private void OnDrawGizmos() {
