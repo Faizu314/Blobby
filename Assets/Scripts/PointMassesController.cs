@@ -1,9 +1,11 @@
+using Cinemachine.Utility;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PointMassesController : MonoBehaviour {
 
     [SerializeField] private List<PointMass> m_PointMasses;
+    [SerializeField] private List<BoxCollider2D> m_EdgeColliders;
     [SerializeField] private PointMass m_MidMass;
     [SerializeField] private ReferenceFrameController m_FrameController;
 
@@ -18,6 +20,7 @@ public class PointMassesController : MonoBehaviour {
 
     [SerializeField] public List<SpringJoint2D> m_BetweenPointMasses;
     [SerializeField] public List<SpringJoint2D> m_MassesToEdges;
+    [SerializeField] public List<SpringJoint2D> m_EdgesToMasses;
 
     [Header("Point Masses Joint settings")][Space(5)]
     [SerializeField] private float m_MassesDamping;
@@ -31,6 +34,8 @@ public class PointMassesController : MonoBehaviour {
     [SerializeField] private float m_MassesLinearDrag;
     [SerializeField] private float m_MassesGravityScale;
 
+    [SerializeField] [Range(1f, 3f)] private float m_Scale;
+
     [Header("Debug")][Space(5)]
     [SerializeField] private bool m_UpdateSettingsEveryFrame;
 
@@ -38,6 +43,16 @@ public class PointMassesController : MonoBehaviour {
     public float PointMassesDeviation = 0f;
     private float m_PointMassesDeviation = 0f;
     private float m_PrevPointMassesDeviation = 0f;
+
+    public Vector2 AvgPosition { 
+        get {
+            var pos = Vector2.zero;
+            foreach (var point in m_PointMasses)
+                pos += point.Position;
+
+            return pos / m_PointMasses.Count;
+        } 
+    }
 
     public Vector3 PointPosition(int i) {
         //Vector2 position = Vector2.zero;
@@ -53,17 +68,22 @@ public class PointMassesController : MonoBehaviour {
     private Rigidbody2D[] m_Rigidbodies;
 
     private List<float> m_ReferenceBaseAngles;
+    private List<float> m_BaseJointDist;
+    private List<float> m_BaseColLength;
+    private List<Vector2> m_BaseEdgeAnchors;
     private List<float> m_ReferenceRadii;
     private float m_ReferenceArea;
 
     private void Start() {
         m_Rigidbodies = GetComponentsInChildren<Rigidbody2D>();
 
+        m_BaseJointDist = new();
         foreach (var joint in m_BetweenPointMasses) {
             joint.enableCollision = false;
             joint.frequency = m_MassesFrequency;
             joint.dampingRatio = m_MassesDamping;
             joint.autoConfigureDistance = false;
+            m_BaseJointDist.Add(joint.distance);
         }
         foreach (var joint in m_MassesToEdges) {
             joint.enableCollision = false;
@@ -71,6 +91,13 @@ public class PointMassesController : MonoBehaviour {
             joint.dampingRatio = m_EdgesDamping;
             joint.autoConfigureDistance = false;
         }
+
+        m_BaseColLength = new();
+        foreach (var col in m_EdgeColliders)
+            m_BaseColLength.Add(col.size.x);
+        m_BaseEdgeAnchors = new();
+        foreach (var joint in m_EdgesToMasses)
+            m_BaseEdgeAnchors.Add(joint.anchor);
 
         foreach (var comp in m_Rigidbodies) {
             comp.drag = m_MassesLinearDrag;
@@ -113,25 +140,56 @@ public class PointMassesController : MonoBehaviour {
     }
 
     private void Update() {
-        if (!m_UpdateSettingsEveryFrame)
-            return;
+        if (m_UpdateSettingsEveryFrame)
+            ApplyConfiguration();
 
-        ApplyConfiguration();
+        Inflate();
+    }
+
+    private void Inflate() {
+        m_FrameController.transform.localScale = Vector3.one * m_Scale;
+
+        for (int i = 0; i < m_BetweenPointMasses.Count; i++)
+            m_BetweenPointMasses[i].distance = m_BaseJointDist[i] * m_Scale;
+
+        for (int i = 0; i < m_EdgeColliders.Count; i++)
+            m_EdgeColliders[i].size = new(m_BaseColLength[i] * m_Scale, m_EdgeColliders[i].size.y);
+
+        for (int i = 0; i < m_EdgesToMasses.Count; i++)
+            m_EdgesToMasses[i].anchor = m_BaseEdgeAnchors[i] * m_Scale;
     }
 
     private void FixedUpdate() {
         ApplyNormalPressure();
     }
 
+    public void ApplyFrameNetCorrection(Vector2 netRefForce) {
+        if (netRefForce.IsNaN())
+            return;
+        if (float.IsInfinity(netRefForce.x) || float.IsInfinity(netRefForce.y))
+            return;
+
+        netRefForce /= m_PointMasses.Count;
+
+        foreach (var point in m_PointMasses)
+            point.Rb.AddForce(-netRefForce);
+    }
+
     public void ApplyTorque(float torque) {
         if (Mathf.Abs((m_PointMassesDeviation - m_PrevPointMassesDeviation) / Time.fixedDeltaTime) > m_MaxRotationByTorque)
             return;
 
-        float torquePerMass = -torque / m_PointMasses.Count;
+        float distSum = 0f;
+        for (int i = 0; i < m_PointMasses.Count; i++)
+            distSum += Vector3.Distance(m_PointMasses[i].Position, m_MidMass.Position);
+
+        float torquePerMass = -torque / distSum;
 
         for (int i = 0; i < m_PointMasses.Count; i++) {
-            Vector2 force = Vector3.Cross(m_PointMasses[i].Position - m_MidMass.Position, Vector3.back);
-            m_PointMasses[i].Rb.AddForce(force.normalized * torquePerMass / force.magnitude);
+            Vector2 normal = (m_PointMasses[i].Position - m_MidMass.Position).normalized;
+            Vector2 force = Vector3.Cross(normal, Vector3.back);
+            force = (force * torquePerMass) + (normal * Mathf.Abs(torquePerMass));
+            m_PointMasses[i].Rb.AddForce(force);
         }
     }
     
