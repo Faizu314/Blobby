@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SoftCarController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PointMassesController m_BodyController;
 
@@ -25,13 +25,12 @@ public class SoftCarController : MonoBehaviour
 
     private void FixedUpdate() {
         if (m_Inputs.MovingForward)
-            MoveForward(Speed);
+            Move(Speed);
         else if (m_Inputs.MovingBackward)
-            MoveForward(-Speed);
+            Move(-Speed);
     }
 
-
-    private void MoveForward(float amount) {
+    private void Move(float amount) {
         m_BodyController.ApplyTorque(amount);
     }
 

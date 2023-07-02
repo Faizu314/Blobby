@@ -1,4 +1,3 @@
-using Cinemachine.Utility;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +6,7 @@ public class PointMassesController : MonoBehaviour {
     [SerializeField] private List<PointMass> m_PointMasses;
     [SerializeField] private List<BoxCollider2D> m_EdgeColliders;
     [SerializeField] private PointMass m_MidMass;
-    [SerializeField] private ReferenceFrameController m_FrameController;
+    [SerializeField] private Rigidbody2D m_FrameController;
 
     [Tooltip("Rate of change of point masses angle deviation calculation.")]
     [SerializeField] private float m_DevRateOfChange;
@@ -58,13 +57,6 @@ public class PointMassesController : MonoBehaviour {
     public Vector2 Position => m_MidMass.Position;
 
     public Vector3 PointPosition(int i) {
-        //Vector2 position = Vector2.zero;
-
-        //for (int i = 0; i < m_PointMasses.Count; i++)
-        //    position += m_PointMasses[i].Position;
-
-        //return position / m_PointMasses.Count;
-
         return m_PointMasses[i].Position;
     }
 
@@ -163,6 +155,7 @@ public class PointMassesController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+        m_FrameController.rotation = PointMassesDeviation;
         ApplyNormalPressure();
     }
 

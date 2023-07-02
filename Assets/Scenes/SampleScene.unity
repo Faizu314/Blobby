@@ -1096,54 +1096,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 117440677332162933, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
-      propertyPath: m_Distance
-      value: 0.32766676
-      objectReference: {fileID: 0}
-    - target: {fileID: 377504380997923689, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
-      propertyPath: m_Distance
-      value: 0.6666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 1367999984092141834, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
-      propertyPath: m_Distance
-      value: 0.33333337
-      objectReference: {fileID: 0}
-    - target: {fileID: 1881693377347204522, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
-      propertyPath: HookForce
-      value: 1500
-      objectReference: {fileID: 0}
-    - target: {fileID: 2101254282940301259, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
-      propertyPath: m_Distance
-      value: 0.6666665
-      objectReference: {fileID: 0}
-    - target: {fileID: 3172822126741518536, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
-      propertyPath: m_Distance
-      value: 0.33333337
-      objectReference: {fileID: 0}
-    - target: {fileID: 3339145462239510399, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
-      propertyPath: m_Distance
-      value: 0.6666666
-      objectReference: {fileID: 0}
-    - target: {fileID: 3340708581636311104, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
-      propertyPath: m_Distance
-      value: 0.35300004
-      objectReference: {fileID: 0}
-    - target: {fileID: 3765921906055001834, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
-      propertyPath: m_Distance
-      value: 0.35066664
-      objectReference: {fileID: 0}
-    - target: {fileID: 4314587423122567190, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
-      propertyPath: m_Distance
-      value: 0.66666675
-      objectReference: {fileID: 0}
-    - target: {fileID: 4517883411866389046, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
-      propertyPath: m_Distance
-      value: 0.66666675
-      objectReference: {fileID: 0}
-    - target: {fileID: 5022083482165050269, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
-      propertyPath: m_Distance
-      value: 0.66666675
-      objectReference: {fileID: 0}
     - target: {fileID: 5761702893404628979, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -1188,57 +1140,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5813261259423089165, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
-      propertyPath: m_Distance
-      value: 0.33333325
-      objectReference: {fileID: 0}
-    - target: {fileID: 5820045674434760140, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
-      propertyPath: m_Distance
-      value: 0.31366658
-      objectReference: {fileID: 0}
-    - target: {fileID: 6199816132538092393, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
-      propertyPath: m_Distance
-      value: 0.33333337
-      objectReference: {fileID: 0}
     - target: {fileID: 6996564341466945119, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7504297832458881156, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
-      propertyPath: m_Distance
-      value: 0.66666675
-      objectReference: {fileID: 0}
-    - target: {fileID: 7646048709572552295, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
-      propertyPath: m_Distance
-      value: 0.6666666
-      objectReference: {fileID: 0}
-    - target: {fileID: 7818894209492942498, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
-      propertyPath: m_Distance
-      value: 0.33566666
-      objectReference: {fileID: 0}
-    - target: {fileID: 7966969663130123779, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
-      propertyPath: m_Distance
-      value: 0.6666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 8091379898430938035, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
-      propertyPath: m_Distance
-      value: 0.6666665
-      objectReference: {fileID: 0}
-    - target: {fileID: 8141147545188288506, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
-      propertyPath: m_Distance
-      value: 0.3310001
-      objectReference: {fileID: 0}
-    - target: {fileID: 8480087375411889743, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
-      propertyPath: m_Distance
-      value: 0.33266664
-      objectReference: {fileID: 0}
-    - target: {fileID: 8643235783875996026, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
-      propertyPath: m_Distance
-      value: 0.6666666
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656786721177349552, guid: 9890d1746aea001498f82df9135e4ab7, type: 3}
-      propertyPath: m_Distance
-      value: 0.6666666
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

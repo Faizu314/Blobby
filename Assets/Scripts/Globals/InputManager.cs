@@ -6,6 +6,7 @@ public class InputManager : MonoBehaviour
     public static InputManager Instance => m_Instance;
     private static InputManager m_Instance;
     private InputActions m_Input;
+    private Camera m_Camera;
 
     public delegate void HookAction(Vector2 mousePos);
     public event HookAction OnJump;
@@ -19,6 +20,8 @@ public class InputManager : MonoBehaviour
     }
 
     private void Start() {
+        m_Camera = Camera.main;
+
         m_Input = new InputActions();
 
         m_Input.Movement.Enable();
@@ -27,7 +30,7 @@ public class InputManager : MonoBehaviour
 
     private Vector2 GetMouseWorldPos() {
         var mousePos = m_Input.Movement.MousePos.ReadValue<Vector2>();
-        return Camera.main.ScreenToWorldPoint(mousePos);
+        return m_Camera.ScreenToWorldPoint(mousePos);
     }
 
     private void Update() {

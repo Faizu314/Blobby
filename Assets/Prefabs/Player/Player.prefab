@@ -265,7 +265,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.6666666
+  m_Distance: 0.6666665
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!114 &7167555346741069452
@@ -281,7 +281,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowNormalGizmo: 0
-  m_ShowFrameGizmo: 0
 --- !u!231 &2369992166590951246
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -785,7 +784,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.6666666
+  m_Distance: 0.66666675
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!231 &3339145462239510399
@@ -806,7 +805,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.6666667
+  m_Distance: 0.6666666
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!114 &4806380003897331088
@@ -822,7 +821,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowNormalGizmo: 0
-  m_ShowFrameGizmo: 0
 --- !u!231 &1367999984092141834
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -841,7 +839,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.3333333
+  m_Distance: 0.33333337
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!231 &5820045674434760140
@@ -862,7 +860,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.3136667
+  m_Distance: 0.31366658
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!1 &2563555211029685820
@@ -1096,7 +1094,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.6666666
+  m_Distance: 0.6666667
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!231 &3587582568355529210
@@ -1133,7 +1131,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowNormalGizmo: 0
-  m_ShowFrameGizmo: 0
 --- !u!231 &4529646078124862820
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -1187,8 +1184,6 @@ GameObject:
   - component: {fileID: 5886570035346167905}
   - component: {fileID: 8854601984244543666}
   - component: {fileID: 8245017127453435049}
-  - component: {fileID: 2060747532352986985}
-  - component: {fileID: 6554436637690348014}
   m_Layer: 7
   m_Name: ReferenceFrame
   m_TagString: Untagged
@@ -1271,83 +1266,6 @@ SpringJoint2D:
   m_Distance: 0.005
   m_DampingRatio: 1
   m_Frequency: 0
---- !u!114 &2060747532352986985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3481454132665433377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbda7b02193024245982158266850c65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Controller: {fileID: 4121242649510393142}
-  m_ReferencePoints:
-  - {fileID: 8739107340932054442}
-  - {fileID: 1463090737168727180}
-  - {fileID: 5388336708080414064}
-  - {fileID: 894163665853421376}
-  - {fileID: 3010720021566795404}
-  - {fileID: 3615472103090116266}
-  - {fileID: 606354531515218676}
-  - {fileID: 970266704297702255}
-  - {fileID: 2170625451644857204}
-  - {fileID: 4347946521139566717}
-  - {fileID: 8391599933410843484}
-  - {fileID: 5540797056420957376}
-  m_Joints:
-  - {fileID: 5199474035836324915}
-  - {fileID: 1166608457539268298}
-  - {fileID: 489055770332133599}
-  - {fileID: 6855675696363391977}
-  - {fileID: 6687207837640352223}
-  - {fileID: 7502515766222294847}
-  - {fileID: 7993552597780796839}
-  - {fileID: 8536202073957915657}
-  - {fileID: 2714955060752470273}
-  - {fileID: 760277591596752829}
-  - {fileID: 5736141426307222039}
-  - {fileID: 179489689807562409}
-  m_FrequencyByDistance:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  m_Multiplier: 0
---- !u!114 &6554436637690348014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3481454132665433377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 062d6ad895a2b514b89518bc36edd5db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Scale: 1
 --- !u!1 &3834967640771809677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1430,7 +1348,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.6666667
+  m_Distance: 0.6666666
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!231 &377504380997923689
@@ -1451,7 +1369,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.6666666
+  m_Distance: 0.6666667
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!114 &2918832604599563374
@@ -1467,7 +1385,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowNormalGizmo: 0
-  m_ShowFrameGizmo: 0
 --- !u!231 &3765921906055001834
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -1486,7 +1403,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.3506667
+  m_Distance: 0.35066664
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!231 &6199816132538092393
@@ -1507,7 +1424,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.3333333
+  m_Distance: 0.33333337
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!1 &3875527648083764657
@@ -1673,7 +1590,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.6666667
+  m_Distance: 0.6666666
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!231 &1279067671348072785
@@ -1710,7 +1627,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowNormalGizmo: 0
-  m_ShowFrameGizmo: 0
 --- !u!231 &3340708581636311104
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -1729,7 +1645,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.353
+  m_Distance: 0.35300004
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!231 &1502484194275550209
@@ -2170,7 +2086,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowNormalGizmo: 0
-  m_ShowFrameGizmo: 0
 --- !u!231 &7818894209492942498
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -2189,7 +2104,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.33566678
+  m_Distance: 0.33566666
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!231 &7055243227844604791
@@ -2297,30 +2212,30 @@ MonoBehaviour:
   - {fileID: 6101926022819613083}
   - {fileID: 2219659263534492720}
   m_MidMass: {fileID: 2667372213949574875}
-  m_FrameController: {fileID: 2060747532352986985}
+  m_FrameController: {fileID: 8854601984244543666}
   m_DevRateOfChange: 30
   m_MaxRotationByTorque: 200
-  m_PressureConstant: 0
+  m_PressureConstant: 1
   m_PressureByArea:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 10
-      inSlope: -0.11979843
-      outSlope: -0.11979843
+      value: 3.0282478
+      inSlope: -3.0110846
+      outSlope: -3.0110846
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.38182276
+      outWeight: 0.121710524
     - serializedVersion: 3
       time: 1.0133922
-      value: 0.047058538
-      inSlope: -24.677118
-      outSlope: -24.677118
+      value: 0
+      inSlope: -2.70632
+      outSlope: -2.70632
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.07877685
+      inWeight: 0.12500003
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -2524,7 +2439,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.6666666
+  m_Distance: 0.66666675
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!114 &2170951678812977331
@@ -2540,7 +2455,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowNormalGizmo: 0
-  m_ShowFrameGizmo: 0
 --- !u!231 &8480087375411889743
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -2559,7 +2473,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.33266667
+  m_Distance: 0.33266664
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!231 &3172822126741518536
@@ -2580,7 +2494,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.33333334
+  m_Distance: 0.33333337
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!1 &5217247530323146093
@@ -2851,7 +2765,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowNormalGizmo: 0
-  m_ShowFrameGizmo: 0
 --- !u!231 &3749495864039320463
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -3013,7 +2926,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowNormalGizmo: 0
-  m_ShowFrameGizmo: 0
 --- !u!231 &5278523245166631240
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -3053,7 +2965,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.33099997
+  m_Distance: 0.3310001
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!1 &5569853076647693482
@@ -3790,7 +3702,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.6666666
+  m_Distance: 0.66666675
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!231 &8656786721177349552
@@ -3811,7 +3723,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.6666667
+  m_Distance: 0.6666666
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!114 &6193583310363827711
@@ -3827,7 +3739,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowNormalGizmo: 0
-  m_ShowFrameGizmo: 0
 --- !u!231 &9048484256401787486
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -4274,7 +4185,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowNormalGizmo: 0
-  m_ShowFrameGizmo: 0
 --- !u!231 &7592070262396440
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -4641,7 +4551,7 @@ MonoBehaviour:
     m_Bits: 256
   Speed: 200
   RotationSpeed: 200
-  HookForce: 1000
+  HookForce: 1500
 --- !u!1 &7366587815654007284
 GameObject:
   m_ObjectHideFlags: 0
@@ -4886,7 +4796,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.6666666
+  m_Distance: 0.6666665
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!231 &4314587423122567190
@@ -4907,7 +4817,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.6666666
+  m_Distance: 0.66666675
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!114 &399213711390531064
@@ -4923,7 +4833,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowNormalGizmo: 0
-  m_ShowFrameGizmo: 0
 --- !u!231 &5813261259423089165
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -4942,7 +4851,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.33333337
+  m_Distance: 0.33333325
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!231 &117440677332162933
@@ -4963,7 +4872,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.32766664
+  m_Distance: 0.32766676
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!1 &7731783735126103460
@@ -5085,7 +4994,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowNormalGizmo: 0
-  m_ShowFrameGizmo: 0
 --- !u!231 &551263372439375336
 SpringJoint2D:
   m_ObjectHideFlags: 0
