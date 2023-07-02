@@ -6,7 +6,7 @@
             "id": "308e425b-8680-47a8-9e42-32bab3aa1647",
             "actions": [
                 {
-                    "name": "Jump",
+                    "name": "Click",
                     "type": "Button",
                     "id": "6651e651-7b4d-46cd-a9f1-c20a9ad4dadc",
                     "expectedControlType": "Button",
@@ -33,19 +33,10 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "RotateC",
+                    "name": "MousePos",
                     "type": "Value",
-                    "id": "0781c705-bb91-4bd9-890a-e1aedfeacd72",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "RotateAC",
-                    "type": "Value",
-                    "id": "e235c4ce-3862-45c2-bbef-626f916a1bed",
-                    "expectedControlType": "",
+                    "id": "3269daf9-29c8-4898-be58-7e562c96b24b",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -55,11 +46,11 @@
                 {
                     "name": "",
                     "id": "e2205484-d5c2-44ad-9ec1-c8957af3f3ca",
-                    "path": "<Keyboard>/space",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Desktop",
-                    "action": "Jump",
+                    "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -69,7 +60,7 @@
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Desktop",
                     "action": "Forward",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -80,30 +71,19 @@
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Desktop",
                     "action": "Backward",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "f54462b9-32e5-4ac9-99c5-8d7dedb5afb0",
-                    "path": "<Keyboard>/d",
+                    "id": "27448ad6-6dc7-43df-907b-e98749f25746",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "RotateC",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5a41d214-220a-4cec-8f04-18d4eeb493d7",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RotateAC",
+                    "groups": "Desktop",
+                    "action": "MousePos",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

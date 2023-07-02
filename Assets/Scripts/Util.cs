@@ -13,4 +13,8 @@ public static class Util {
         return new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
     }
 
+    public static bool IsInLayerMask(LayerMask layermask, int layer) {
+        return layermask == (layermask | (1 << layer));
+    }
+
 }

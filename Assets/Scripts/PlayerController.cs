@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
         m_Input = new InputActions();
         m_Input.Movement.Enable();
 
-        m_Input.Movement.Jump.performed += _ => OnJump();
     }
 
     private void OnJump() {

@@ -18,6 +18,7 @@ public class PointMassesController : MonoBehaviour {
     [Tooltip("P = AnimCurve(Area/BaseArea) * PressureConstant")]
     [SerializeField] private AnimationCurve m_PressureByArea;
 
+    [Header("Spring Joints")][Space(5)]
     [SerializeField] public List<SpringJoint2D> m_BetweenPointMasses;
     [SerializeField] public List<SpringJoint2D> m_MassesToEdges;
     [SerializeField] public List<SpringJoint2D> m_EdgesToMasses;
@@ -34,7 +35,7 @@ public class PointMassesController : MonoBehaviour {
     [SerializeField] private float m_MassesLinearDrag;
     [SerializeField] private float m_MassesGravityScale;
 
-    [SerializeField] [Range(1f, 3f)] private float m_Scale;
+    [SerializeField] [Range(1f, 3f)] public float Scale;
 
     [Header("Debug")][Space(5)]
     [SerializeField] private bool m_UpdateSettingsEveryFrame;
@@ -53,6 +54,8 @@ public class PointMassesController : MonoBehaviour {
             return pos / m_PointMasses.Count;
         } 
     }
+
+    public Vector2 Position => m_MidMass.Position;
 
     public Vector3 PointPosition(int i) {
         //Vector2 position = Vector2.zero;
@@ -147,32 +150,20 @@ public class PointMassesController : MonoBehaviour {
     }
 
     private void Inflate() {
-        m_FrameController.transform.localScale = Vector3.one * m_Scale;
+        m_FrameController.transform.localScale = Vector3.one * Scale;
 
         for (int i = 0; i < m_BetweenPointMasses.Count; i++)
-            m_BetweenPointMasses[i].distance = m_BaseJointDist[i] * m_Scale;
+            m_BetweenPointMasses[i].distance = m_BaseJointDist[i] * Scale;
 
         for (int i = 0; i < m_EdgeColliders.Count; i++)
-            m_EdgeColliders[i].size = new(m_BaseColLength[i] * m_Scale, m_EdgeColliders[i].size.y);
+            m_EdgeColliders[i].size = new(m_BaseColLength[i] * Scale, m_EdgeColliders[i].size.y);
 
         for (int i = 0; i < m_EdgesToMasses.Count; i++)
-            m_EdgesToMasses[i].anchor = m_BaseEdgeAnchors[i] * m_Scale;
+            m_EdgesToMasses[i].anchor = m_BaseEdgeAnchors[i] * Scale;
     }
 
     private void FixedUpdate() {
         ApplyNormalPressure();
-    }
-
-    public void ApplyFrameNetCorrection(Vector2 netRefForce) {
-        if (netRefForce.IsNaN())
-            return;
-        if (float.IsInfinity(netRefForce.x) || float.IsInfinity(netRefForce.y))
-            return;
-
-        netRefForce /= m_PointMasses.Count;
-
-        foreach (var point in m_PointMasses)
-            point.Rb.AddForce(-netRefForce);
     }
 
     public void ApplyTorque(float torque) {

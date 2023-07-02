@@ -28,7 +28,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             ""id"": ""308e425b-8680-47a8-9e42-32bab3aa1647"",
             ""actions"": [
                 {
-                    ""name"": ""Jump"",
+                    ""name"": ""Click"",
                     ""type"": ""Button"",
                     ""id"": ""6651e651-7b4d-46cd-a9f1-c20a9ad4dadc"",
                     ""expectedControlType"": ""Button"",
@@ -55,19 +55,10 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""RotateC"",
+                    ""name"": ""MousePos"",
                     ""type"": ""Value"",
-                    ""id"": ""0781c705-bb91-4bd9-890a-e1aedfeacd72"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""RotateAC"",
-                    ""type"": ""Value"",
-                    ""id"": ""e235c4ce-3862-45c2-bbef-626f916a1bed"",
-                    ""expectedControlType"": """",
+                    ""id"": ""3269daf9-29c8-4898-be58-7e562c96b24b"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -77,11 +68,11 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e2205484-d5c2-44ad-9ec1-c8957af3f3ca"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Desktop"",
-                    ""action"": ""Jump"",
+                    ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -91,7 +82,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Desktop"",
                     ""action"": ""Forward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -102,30 +93,19 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Desktop"",
                     ""action"": ""Backward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f54462b9-32e5-4ac9-99c5-8d7dedb5afb0"",
-                    ""path"": ""<Keyboard>/d"",
+                    ""id"": ""27448ad6-6dc7-43df-907b-e98749f25746"",
+                    ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RotateC"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5a41d214-220a-4cec-8f04-18d4eeb493d7"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RotateAC"",
+                    ""groups"": ""Desktop"",
+                    ""action"": ""MousePos"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -153,11 +133,10 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
 }");
         // Movement
         m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
-        m_Movement_Jump = m_Movement.FindAction("Jump", throwIfNotFound: true);
+        m_Movement_Click = m_Movement.FindAction("Click", throwIfNotFound: true);
         m_Movement_Forward = m_Movement.FindAction("Forward", throwIfNotFound: true);
         m_Movement_Backward = m_Movement.FindAction("Backward", throwIfNotFound: true);
-        m_Movement_RotateC = m_Movement.FindAction("RotateC", throwIfNotFound: true);
-        m_Movement_RotateAC = m_Movement.FindAction("RotateAC", throwIfNotFound: true);
+        m_Movement_MousePos = m_Movement.FindAction("MousePos", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -219,20 +198,18 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     // Movement
     private readonly InputActionMap m_Movement;
     private List<IMovementActions> m_MovementActionsCallbackInterfaces = new List<IMovementActions>();
-    private readonly InputAction m_Movement_Jump;
+    private readonly InputAction m_Movement_Click;
     private readonly InputAction m_Movement_Forward;
     private readonly InputAction m_Movement_Backward;
-    private readonly InputAction m_Movement_RotateC;
-    private readonly InputAction m_Movement_RotateAC;
+    private readonly InputAction m_Movement_MousePos;
     public struct MovementActions
     {
         private @InputActions m_Wrapper;
         public MovementActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Jump => m_Wrapper.m_Movement_Jump;
+        public InputAction @Click => m_Wrapper.m_Movement_Click;
         public InputAction @Forward => m_Wrapper.m_Movement_Forward;
         public InputAction @Backward => m_Wrapper.m_Movement_Backward;
-        public InputAction @RotateC => m_Wrapper.m_Movement_RotateC;
-        public InputAction @RotateAC => m_Wrapper.m_Movement_RotateAC;
+        public InputAction @MousePos => m_Wrapper.m_Movement_MousePos;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -242,40 +219,34 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_MovementActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_MovementActionsCallbackInterfaces.Add(instance);
-            @Jump.started += instance.OnJump;
-            @Jump.performed += instance.OnJump;
-            @Jump.canceled += instance.OnJump;
+            @Click.started += instance.OnClick;
+            @Click.performed += instance.OnClick;
+            @Click.canceled += instance.OnClick;
             @Forward.started += instance.OnForward;
             @Forward.performed += instance.OnForward;
             @Forward.canceled += instance.OnForward;
             @Backward.started += instance.OnBackward;
             @Backward.performed += instance.OnBackward;
             @Backward.canceled += instance.OnBackward;
-            @RotateC.started += instance.OnRotateC;
-            @RotateC.performed += instance.OnRotateC;
-            @RotateC.canceled += instance.OnRotateC;
-            @RotateAC.started += instance.OnRotateAC;
-            @RotateAC.performed += instance.OnRotateAC;
-            @RotateAC.canceled += instance.OnRotateAC;
+            @MousePos.started += instance.OnMousePos;
+            @MousePos.performed += instance.OnMousePos;
+            @MousePos.canceled += instance.OnMousePos;
         }
 
         private void UnregisterCallbacks(IMovementActions instance)
         {
-            @Jump.started -= instance.OnJump;
-            @Jump.performed -= instance.OnJump;
-            @Jump.canceled -= instance.OnJump;
+            @Click.started -= instance.OnClick;
+            @Click.performed -= instance.OnClick;
+            @Click.canceled -= instance.OnClick;
             @Forward.started -= instance.OnForward;
             @Forward.performed -= instance.OnForward;
             @Forward.canceled -= instance.OnForward;
             @Backward.started -= instance.OnBackward;
             @Backward.performed -= instance.OnBackward;
             @Backward.canceled -= instance.OnBackward;
-            @RotateC.started -= instance.OnRotateC;
-            @RotateC.performed -= instance.OnRotateC;
-            @RotateC.canceled -= instance.OnRotateC;
-            @RotateAC.started -= instance.OnRotateAC;
-            @RotateAC.performed -= instance.OnRotateAC;
-            @RotateAC.canceled -= instance.OnRotateAC;
+            @MousePos.started -= instance.OnMousePos;
+            @MousePos.performed -= instance.OnMousePos;
+            @MousePos.canceled -= instance.OnMousePos;
         }
 
         public void RemoveCallbacks(IMovementActions instance)
@@ -304,10 +275,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     }
     public interface IMovementActions
     {
-        void OnJump(InputAction.CallbackContext context);
+        void OnClick(InputAction.CallbackContext context);
         void OnForward(InputAction.CallbackContext context);
         void OnBackward(InputAction.CallbackContext context);
-        void OnRotateC(InputAction.CallbackContext context);
-        void OnRotateAC(InputAction.CallbackContext context);
+        void OnMousePos(InputAction.CallbackContext context);
     }
 }
