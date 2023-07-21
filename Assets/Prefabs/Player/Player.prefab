@@ -1,5 +1,101 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &36489821176423054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1816424246704736907}
+  - component: {fileID: 4559357812771999493}
+  m_Layer: 0
+  m_Name: bone_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1816424246704736907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36489821176423054}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.996, y: 0.996, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3498755416002004408}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4559357812771999493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36489821176423054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5efbb14f6b8156c41bd877df673ca545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MassToFollow: {fileID: 8533929342338399767}
+  m_MidMass: {fileID: 4804322539188293610}
+  m_FollowSpeed: 5
+  m_BoneBaseRot: 0
+--- !u!1 &408291251843895552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3387608971299009261}
+  - component: {fileID: 5300796131998942116}
+  m_Layer: 0
+  m_Name: bone_7
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3387608971299009261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408291251843895552}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.996, y: -0.996, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3498755416002004408}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5300796131998942116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408291251843895552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5efbb14f6b8156c41bd877df673ca545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MassToFollow: {fileID: 819912693956419724}
+  m_MidMass: {fileID: 4804322539188293610}
+  m_FollowSpeed: 5
+  m_BoneBaseRot: 0
 --- !u!1 &932281741864665289
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,7 +107,7 @@ GameObject:
   - component: {fileID: 2236490083333782860}
   - component: {fileID: 970266704297702255}
   - component: {fileID: 8536202073957915657}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,6 +177,54 @@ SpringJoint2D:
   m_Distance: 0.005
   m_DampingRatio: 0.1
   m_Frequency: 1
+--- !u!1 &1092195767743505978
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3021156538161393721}
+  - component: {fileID: 2480382602607086619}
+  m_Layer: 0
+  m_Name: bone_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3021156538161393721
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092195767743505978}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3333332, y: 0.996, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3498755416002004408}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2480382602607086619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092195767743505978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5efbb14f6b8156c41bd877df673ca545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MassToFollow: {fileID: 3490526695760127639}
+  m_MidMass: {fileID: 4804322539188293610}
+  m_FollowSpeed: 5
+  m_BoneBaseRot: 0
 --- !u!1 &1188210077780472313
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +236,7 @@ GameObject:
   - component: {fileID: 6695016671076038118}
   - component: {fileID: 3615472103090116266}
   - component: {fileID: 7502515766222294847}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,6 +321,7 @@ GameObject:
   - component: {fileID: 7167555346741069452}
   - component: {fileID: 2369992166590951246}
   - component: {fileID: 9221349950582454066}
+  - component: {fileID: 4969290217461912939}
   m_Layer: 6
   m_Name: 5
   m_TagString: Untagged
@@ -265,7 +410,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.6666665
+  m_Distance: 0.6666666
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!114 &7167555346741069452
@@ -323,6 +468,89 @@ SpringJoint2D:
   m_Distance: 0.33333325
   m_DampingRatio: 0
   m_Frequency: 1
+--- !u!58 &4969290217461912939
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580500489070090029}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!1 &1621888909651220226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 515708231455929731}
+  - component: {fileID: 5801630366755102822}
+  m_Layer: 0
+  m_Name: bone_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &515708231455929731
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621888909651220226}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.3333336, y: 0.996, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3498755416002004408}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5801630366755102822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621888909651220226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5efbb14f6b8156c41bd877df673ca545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MassToFollow: {fileID: 6788112291727941986}
+  m_MidMass: {fileID: 4804322539188293610}
+  m_FollowSpeed: 5
+  m_BoneBaseRot: 0
 --- !u!1 &1954937469934886299
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,7 +562,7 @@ GameObject:
   - component: {fileID: 4368301440010034709}
   - component: {fileID: 3010720021566795404}
   - component: {fileID: 6687207837640352223}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -717,6 +945,7 @@ GameObject:
   - component: {fileID: 4806380003897331088}
   - component: {fileID: 1367999984092141834}
   - component: {fileID: 5820045674434760140}
+  - component: {fileID: 4329770849919414595}
   m_Layer: 6
   m_Name: 3
   m_TagString: Untagged
@@ -784,7 +1013,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.66666675
+  m_Distance: 0.6666666
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!231 &3339145462239510399
@@ -805,7 +1034,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.6666666
+  m_Distance: 0.6666667
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!114 &4806380003897331088
@@ -839,7 +1068,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.33333337
+  m_Distance: 0.3333333
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!231 &5820045674434760140
@@ -860,9 +1089,44 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.31366658
+  m_Distance: 0.3136667
   m_DampingRatio: 0
   m_Frequency: 1
+--- !u!58 &4329770849919414595
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2512761906150727126}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &2563555211029685820
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,6 +1276,54 @@ SpringJoint2D:
   m_Distance: 0.005
   m_DampingRatio: 1
   m_Frequency: 0
+--- !u!1 &2594923297423248892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3322110126563567249}
+  - component: {fileID: 60168928143361689}
+  m_Layer: 0
+  m_Name: bone_11
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3322110126563567249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2594923297423248892}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.996, y: -0.3333332, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3498755416002004408}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &60168928143361689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2594923297423248892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5efbb14f6b8156c41bd877df673ca545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MassToFollow: {fileID: 6982634867865153868}
+  m_MidMass: {fileID: 4804322539188293610}
+  m_FollowSpeed: 5
+  m_BoneBaseRot: 0
 --- !u!1 &2920540650577109991
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,6 +1339,7 @@ GameObject:
   - component: {fileID: 7568404055968415604}
   - component: {fileID: 4529646078124862820}
   - component: {fileID: 6433328875705019101}
+  - component: {fileID: 123118633319178849}
   m_Layer: 6
   m_Name: 9
   m_TagString: Untagged
@@ -1094,7 +1407,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.6666667
+  m_Distance: 0.6666666
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!231 &3587582568355529210
@@ -1173,6 +1486,73 @@ SpringJoint2D:
   m_Distance: 0.3406667
   m_DampingRatio: 0
   m_Frequency: 1
+--- !u!58 &123118633319178849
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2920540650577109991}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!1 &3204321889863317631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2634606406371873611}
+  m_Layer: 0
+  m_Name: Graphics
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2634606406371873611
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3204321889863317631}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3498755416002004408}
+  m_Father: {fileID: 5761702893404628979}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3481454132665433377
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,7 +1564,7 @@ GameObject:
   - component: {fileID: 5886570035346167905}
   - component: {fileID: 8854601984244543666}
   - component: {fileID: 8245017127453435049}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: ReferenceFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1266,6 +1646,54 @@ SpringJoint2D:
   m_Distance: 0.005
   m_DampingRatio: 1
   m_Frequency: 0
+--- !u!1 &3608631596234045250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4047346749721317846}
+  - component: {fileID: 4114280149182142789}
+  m_Layer: 0
+  m_Name: bone_12
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4047346749721317846
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3608631596234045250}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.996, y: 0.3333336, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3498755416002004408}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4114280149182142789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3608631596234045250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5efbb14f6b8156c41bd877df673ca545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MassToFollow: {fileID: 2744122260613069780}
+  m_MidMass: {fileID: 4804322539188293610}
+  m_FollowSpeed: 5
+  m_BoneBaseRot: 0
 --- !u!1 &3834967640771809677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1281,6 +1709,7 @@ GameObject:
   - component: {fileID: 2918832604599563374}
   - component: {fileID: 3765921906055001834}
   - component: {fileID: 6199816132538092393}
+  - component: {fileID: 4078063598560268050}
   m_Layer: 6
   m_Name: 8
   m_TagString: Untagged
@@ -1348,7 +1777,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.6666666
+  m_Distance: 0.6666667
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!231 &377504380997923689
@@ -1369,7 +1798,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.6666667
+  m_Distance: 0.6666666
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!114 &2918832604599563374
@@ -1403,7 +1832,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.35066664
+  m_Distance: 0.3506667
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!231 &6199816132538092393
@@ -1424,9 +1853,44 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.33333337
+  m_Distance: 0.3333333
   m_DampingRatio: 0
   m_Frequency: 1
+--- !u!58 &4078063598560268050
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3834967640771809677}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &3875527648083764657
 GameObject:
   m_ObjectHideFlags: 0
@@ -1438,7 +1902,7 @@ GameObject:
   - component: {fileID: 2679800407449282903}
   - component: {fileID: 2170625451644857204}
   - component: {fileID: 2714955060752470273}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1523,6 +1987,7 @@ GameObject:
   - component: {fileID: 2297602033054921955}
   - component: {fileID: 3340708581636311104}
   - component: {fileID: 1502484194275550209}
+  - component: {fileID: 7194994692303508111}
   m_Layer: 6
   m_Name: 4
   m_TagString: Untagged
@@ -1590,7 +2055,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.6666666
+  m_Distance: 0.6666667
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!231 &1279067671348072785
@@ -1645,7 +2110,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.35300004
+  m_Distance: 0.353
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!231 &1502484194275550209
@@ -1669,6 +2134,41 @@ SpringJoint2D:
   m_Distance: 0.33599997
   m_DampingRatio: 0
   m_Frequency: 1
+--- !u!58 &7194994692303508111
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4194994639035407535}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &4354507901030919776
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,6 +2318,54 @@ SpringJoint2D:
   m_Distance: 0.005
   m_DampingRatio: 1
   m_Frequency: 0
+--- !u!1 &4665854923448783460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1003864366408482921}
+  - component: {fileID: 8930832683332842378}
+  m_Layer: 0
+  m_Name: bone_5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1003864366408482921
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4665854923448783460}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.996, y: 0.3333336, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3498755416002004408}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8930832683332842378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4665854923448783460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5efbb14f6b8156c41bd877df673ca545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MassToFollow: {fileID: 3894463140205350878}
+  m_MidMass: {fileID: 4804322539188293610}
+  m_FollowSpeed: 5
+  m_BoneBaseRot: 0
 --- !u!1 &4756537817818936644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1967,6 +2515,134 @@ SpringJoint2D:
   m_Distance: 0.005
   m_DampingRatio: 1
   m_Frequency: 0
+--- !u!1 &4794909175902652621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3498755416002004408}
+  - component: {fileID: 4071143111527510560}
+  - component: {fileID: 6935955912417655426}
+  m_Layer: 0
+  m_Name: Sprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3498755416002004408
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4794909175902652621}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 1816424246704736907}
+  - {fileID: 3021156538161393721}
+  - {fileID: 515708231455929731}
+  - {fileID: 3713070189438800564}
+  - {fileID: 1003864366408482921}
+  - {fileID: 5377965248090877907}
+  - {fileID: 3387608971299009261}
+  - {fileID: 6669210304057129289}
+  - {fileID: 8649194781763247085}
+  - {fileID: 7983268118641564745}
+  - {fileID: 3322110126563567249}
+  - {fileID: 4047346749721317846}
+  m_Father: {fileID: 2634606406371873611}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &4071143111527510560
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4794909175902652621}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 08e80dee02b278448b476685b890586d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 5, y: 5}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &6935955912417655426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4794909175902652621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c008f954fe54a8bb972de1018a2cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RootBone: {fileID: 1816424246704736907}
+  m_BoneTransforms:
+  - {fileID: 1816424246704736907}
+  - {fileID: 3021156538161393721}
+  - {fileID: 515708231455929731}
+  - {fileID: 3713070189438800564}
+  - {fileID: 1003864366408482921}
+  - {fileID: 5377965248090877907}
+  - {fileID: 3387608971299009261}
+  - {fileID: 6669210304057129289}
+  - {fileID: 8649194781763247085}
+  - {fileID: 7983268118641564745}
+  - {fileID: 3322110126563567249}
+  - {fileID: 4047346749721317846}
+  m_Bounds:
+    m_Center: {x: 0, y: 1.7449144, z: 0}
+    m_Extent: {x: 1, y: 1.2550857, z: 0}
+  m_AlwaysUpdate: 0
+  m_AutoRebind: 0
 --- !u!1 &5022070058109735403
 GameObject:
   m_ObjectHideFlags: 0
@@ -1982,6 +2658,7 @@ GameObject:
   - component: {fileID: 2077343904764440996}
   - component: {fileID: 7818894209492942498}
   - component: {fileID: 7055243227844604791}
+  - component: {fileID: 7115123112738779994}
   m_Layer: 6
   m_Name: 11
   m_TagString: Untagged
@@ -2104,7 +2781,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.33566666
+  m_Distance: 0.33566678
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!231 &7055243227844604791
@@ -2128,6 +2805,41 @@ SpringJoint2D:
   m_Distance: 0.33333325
   m_DampingRatio: 0
   m_Frequency: 1
+--- !u!58 &7115123112738779994
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5022070058109735403}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &5091269090668173780
 GameObject:
   m_ObjectHideFlags: 0
@@ -2240,7 +2952,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_BetweenPointMasses:
+  m_MassesToMasses:
   - {fileID: 249651995076899425}
   - {fileID: 3501075992578239567}
   - {fileID: 174249948077522722}
@@ -2327,10 +3039,25 @@ MonoBehaviour:
   - {fileID: 7131179315062736184}
   - {fileID: 5829195080700255254}
   - {fileID: 8304117004518633609}
+  m_FrameToMasses:
+  - {fileID: 5199474035836324915}
+  - {fileID: 1166608457539268298}
+  - {fileID: 489055770332133599}
+  - {fileID: 6855675696363391977}
+  - {fileID: 6687207837640352223}
+  - {fileID: 7502515766222294847}
+  - {fileID: 7993552597780796839}
+  - {fileID: 8536202073957915657}
+  - {fileID: 2714955060752470273}
+  - {fileID: 760277591596752829}
+  - {fileID: 5736141426307222039}
+  - {fileID: 179489689807562409}
   m_MassesDamping: 0.3
   m_MassesFrequency: 3
   m_EdgesDamping: 0.3
   m_EdgesFrequency: 3
+  m_FrameDamping: 0.1
+  m_FrameFrequency: 1
   m_MassesLinearDrag: 0.2
   m_MassesGravityScale: 1
   Scale: 1
@@ -2351,6 +3078,7 @@ GameObject:
   - component: {fileID: 2170951678812977331}
   - component: {fileID: 8480087375411889743}
   - component: {fileID: 3172822126741518536}
+  - component: {fileID: 5030340477132985477}
   m_Layer: 6
   m_Name: 2
   m_TagString: Untagged
@@ -2439,7 +3167,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.66666675
+  m_Distance: 0.6666666
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!114 &2170951678812977331
@@ -2473,7 +3201,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.33266664
+  m_Distance: 0.33266667
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!231 &3172822126741518536
@@ -2494,9 +3222,44 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.33333337
+  m_Distance: 0.33333334
   m_DampingRatio: 0
   m_Frequency: 1
+--- !u!58 &5030340477132985477
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5152510550206735699}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &5217247530323146093
 GameObject:
   m_ObjectHideFlags: 0
@@ -2661,6 +3424,7 @@ GameObject:
   - component: {fileID: 9048097277708567464}
   - component: {fileID: 3749495864039320463}
   - component: {fileID: 8515908181162221175}
+  - component: {fileID: 6721970997259822668}
   m_Layer: 6
   m_Name: 12
   m_TagString: Untagged
@@ -2807,6 +3571,41 @@ SpringJoint2D:
   m_Distance: 0.33666682
   m_DampingRatio: 0
   m_Frequency: 1
+--- !u!58 &6721970997259822668
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5378896120813319410}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &5453716231240975759
 GameObject:
   m_ObjectHideFlags: 0
@@ -2822,6 +3621,7 @@ GameObject:
   - component: {fileID: 4444624066880736812}
   - component: {fileID: 5278523245166631240}
   - component: {fileID: 8141147545188288506}
+  - component: {fileID: 6760032833665759484}
   m_Layer: 6
   m_Name: 10
   m_TagString: Untagged
@@ -2965,9 +3765,44 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.3310001
+  m_Distance: 0.33099997
   m_DampingRatio: 0
   m_Frequency: 1
+--- !u!58 &6760032833665759484
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5453716231240975759}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &5569853076647693482
 GameObject:
   m_ObjectHideFlags: 0
@@ -3277,7 +4112,7 @@ GameObject:
   - component: {fileID: 500216551387297890}
   - component: {fileID: 5388336708080414064}
   - component: {fileID: 489055770332133599}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3539,6 +4374,54 @@ SpringJoint2D:
   m_Distance: 0.005
   m_DampingRatio: 1
   m_Frequency: 0
+--- !u!1 &5900518877782662594
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5377965248090877907}
+  - component: {fileID: 8809806626083498670}
+  m_Layer: 0
+  m_Name: bone_6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5377965248090877907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5900518877782662594}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.996, y: -0.3333332, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3498755416002004408}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8809806626083498670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5900518877782662594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5efbb14f6b8156c41bd877df673ca545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MassToFollow: {fileID: 1574327355567611460}
+  m_MidMass: {fileID: 4804322539188293610}
+  m_FollowSpeed: 5
+  m_BoneBaseRot: 0
 --- !u!1 &6069356595375750880
 GameObject:
   m_ObjectHideFlags: 0
@@ -3550,7 +4433,7 @@ GameObject:
   - component: {fileID: 9161739695550022621}
   - component: {fileID: 8739107340932054442}
   - component: {fileID: 5199474035836324915}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3635,6 +4518,7 @@ GameObject:
   - component: {fileID: 6193583310363827711}
   - component: {fileID: 9048484256401787486}
   - component: {fileID: 5176423757865945044}
+  - component: {fileID: 6249454722982399236}
   m_Layer: 6
   m_Name: 7
   m_TagString: Untagged
@@ -3702,7 +4586,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.66666675
+  m_Distance: 0.6666666
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!231 &8656786721177349552
@@ -3723,7 +4607,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.6666666
+  m_Distance: 0.6666667
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!114 &6193583310363827711
@@ -3781,6 +4665,41 @@ SpringJoint2D:
   m_Distance: 0.31599998
   m_DampingRatio: 0
   m_Frequency: 1
+--- !u!58 &6249454722982399236
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6401165878538960649}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &6542767859962104745
 GameObject:
   m_ObjectHideFlags: 0
@@ -3826,7 +4745,7 @@ GameObject:
   - component: {fileID: 3910779370307972562}
   - component: {fileID: 5540797056420957376}
   - component: {fileID: 179489689807562409}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4003,7 +4922,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.06
+  m_Radius: 0.2
 --- !u!231 &3520753615018647563
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -4280,7 +5199,7 @@ GameObject:
   - component: {fileID: 8117535615662356312}
   - component: {fileID: 4347946521139566717}
   - component: {fileID: 760277591596752829}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4529,6 +5448,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8841987528934016955}
+  - {fileID: 2634606406371873611}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4550,7 +5470,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   Speed: 200
-  RotationSpeed: 200
+  InflationSpeed: 0.5
   HookForce: 1500
 --- !u!1 &7366587815654007284
 GameObject:
@@ -4563,7 +5483,7 @@ GameObject:
   - component: {fileID: 3305856404858322270}
   - component: {fileID: 894163665853421376}
   - component: {fileID: 6855675696363391977}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4644,7 +5564,7 @@ GameObject:
   - component: {fileID: 3548117090945933586}
   - component: {fileID: 1463090737168727180}
   - component: {fileID: 1166608457539268298}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4729,6 +5649,7 @@ GameObject:
   - component: {fileID: 399213711390531064}
   - component: {fileID: 5813261259423089165}
   - component: {fileID: 117440677332162933}
+  - component: {fileID: 8708963304003031109}
   m_Layer: 6
   m_Name: 6
   m_TagString: Untagged
@@ -4796,7 +5717,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.6666665
+  m_Distance: 0.6666666
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!231 &4314587423122567190
@@ -4817,7 +5738,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.66666675
+  m_Distance: 0.6666666
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!114 &399213711390531064
@@ -4851,7 +5772,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.33333325
+  m_Distance: 0.33333337
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!231 &117440677332162933
@@ -4872,9 +5793,44 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.32766676
+  m_Distance: 0.32766664
   m_DampingRatio: 0
   m_Frequency: 1
+--- !u!58 &8708963304003031109
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7711290674293843279}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &7731783735126103460
 GameObject:
   m_ObjectHideFlags: 0
@@ -4890,6 +5846,7 @@ GameObject:
   - component: {fileID: 780035934723032455}
   - component: {fileID: 551263372439375336}
   - component: {fileID: 6101942214340681045}
+  - component: {fileID: 8856911658485507730}
   m_Layer: 6
   m_Name: 1
   m_TagString: Untagged
@@ -5036,6 +5993,89 @@ SpringJoint2D:
   m_Distance: 0.32999992
   m_DampingRatio: 0
   m_Frequency: 1
+--- !u!58 &8856911658485507730
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7731783735126103460}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!1 &7897783827158469161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6669210304057129289}
+  - component: {fileID: 2729581210503357998}
+  m_Layer: 0
+  m_Name: bone_8
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6669210304057129289
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7897783827158469161}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.3333336, y: -0.996, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3498755416002004408}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2729581210503357998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7897783827158469161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5efbb14f6b8156c41bd877df673ca545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MassToFollow: {fileID: 4411500948013667247}
+  m_MidMass: {fileID: 4804322539188293610}
+  m_FollowSpeed: 5
+  m_BoneBaseRot: 0
 --- !u!1 &7919341457992605359
 GameObject:
   m_ObjectHideFlags: 0
@@ -5047,7 +6087,7 @@ GameObject:
   - component: {fileID: 3536777353117918241}
   - component: {fileID: 8391599933410843484}
   - component: {fileID: 5736141426307222039}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5117,6 +6157,54 @@ SpringJoint2D:
   m_Distance: 0.005
   m_DampingRatio: 0.1
   m_Frequency: 1
+--- !u!1 &8210705077118571000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3713070189438800564}
+  - component: {fileID: 5374717522488548545}
+  m_Layer: 0
+  m_Name: bone_4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3713070189438800564
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8210705077118571000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.996, y: 0.996, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3498755416002004408}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5374717522488548545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8210705077118571000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5efbb14f6b8156c41bd877df673ca545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MassToFollow: {fileID: 6723823085891447760}
+  m_MidMass: {fileID: 4804322539188293610}
+  m_FollowSpeed: 5
+  m_BoneBaseRot: 0
 --- !u!1 &8581880843307913001
 GameObject:
   m_ObjectHideFlags: 0
@@ -5266,6 +6354,54 @@ SpringJoint2D:
   m_Distance: 0.005
   m_DampingRatio: 1
   m_Frequency: 0
+--- !u!1 &8652812622412673109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8649194781763247085}
+  - component: {fileID: 7878432546784263237}
+  m_Layer: 0
+  m_Name: bone_9
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8649194781763247085
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8652812622412673109}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3333332, y: -0.996, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3498755416002004408}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7878432546784263237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8652812622412673109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5efbb14f6b8156c41bd877df673ca545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MassToFollow: {fileID: 2227781773365959287}
+  m_MidMass: {fileID: 4804322539188293610}
+  m_FollowSpeed: 5
+  m_BoneBaseRot: 0
 --- !u!1 &8819955174978571690
 GameObject:
   m_ObjectHideFlags: 0
@@ -5277,7 +6413,7 @@ GameObject:
   - component: {fileID: 6001585244816948309}
   - component: {fileID: 606354531515218676}
   - component: {fileID: 7993552597780796839}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5496,3 +6632,51 @@ SpringJoint2D:
   m_Distance: 0.005
   m_DampingRatio: 1
   m_Frequency: 0
+--- !u!1 &9177110926226885797
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7983268118641564745}
+  - component: {fileID: 8638256505671813890}
+  m_Layer: 0
+  m_Name: bone_10
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7983268118641564745
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9177110926226885797}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.996, y: -0.996, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3498755416002004408}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8638256505671813890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9177110926226885797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5efbb14f6b8156c41bd877df673ca545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MassToFollow: {fileID: 1778476823873725998}
+  m_MidMass: {fileID: 4804322539188293610}
+  m_FollowSpeed: 5
+  m_BoneBaseRot: 0

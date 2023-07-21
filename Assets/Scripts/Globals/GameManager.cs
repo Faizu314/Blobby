@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     private static GameManager m_Instance;
 
     public CinemachineTargetGroup TargetGroup;
+    public PlayerController PlayerController;
 
     private void Awake() {
         if (m_Instance != null)

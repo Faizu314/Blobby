@@ -9,7 +9,9 @@ public class InputManager : MonoBehaviour
     private Camera m_Camera;
 
     public delegate void HookAction(Vector2 mousePos);
-    public event HookAction OnJump;
+    public event HookAction OnHookButtonPressed;
+    public delegate void Action();
+    public event Action OnThrowUpButtonPressed;
 
     public PlayerInputs playerInputs = new();
 
@@ -25,7 +27,8 @@ public class InputManager : MonoBehaviour
         m_Input = new InputActions();
 
         m_Input.Movement.Enable();
-        m_Input.Movement.Click.performed += _ => OnJump?.Invoke(GetMouseWorldPos());
+        m_Input.Movement.Click.performed += _ => OnHookButtonPressed?.Invoke(GetMouseWorldPos());
+        m_Input.Movement.ThrowUp.performed += _ => OnThrowUpButtonPressed?.Invoke();
     }
 
     private Vector2 GetMouseWorldPos() {

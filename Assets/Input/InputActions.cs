@@ -62,6 +62,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ThrowUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""214af852-533a-4b3d-bbd5-c98494bdadb4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -108,6 +117,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""MousePos"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""420a7932-3121-442e-baed-31acfa86c899"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Desktop"",
+                    ""action"": ""ThrowUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -137,6 +157,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Movement_Forward = m_Movement.FindAction("Forward", throwIfNotFound: true);
         m_Movement_Backward = m_Movement.FindAction("Backward", throwIfNotFound: true);
         m_Movement_MousePos = m_Movement.FindAction("MousePos", throwIfNotFound: true);
+        m_Movement_ThrowUp = m_Movement.FindAction("ThrowUp", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -202,6 +223,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Movement_Forward;
     private readonly InputAction m_Movement_Backward;
     private readonly InputAction m_Movement_MousePos;
+    private readonly InputAction m_Movement_ThrowUp;
     public struct MovementActions
     {
         private @InputActions m_Wrapper;
@@ -210,6 +232,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @Forward => m_Wrapper.m_Movement_Forward;
         public InputAction @Backward => m_Wrapper.m_Movement_Backward;
         public InputAction @MousePos => m_Wrapper.m_Movement_MousePos;
+        public InputAction @ThrowUp => m_Wrapper.m_Movement_ThrowUp;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -231,6 +254,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @MousePos.started += instance.OnMousePos;
             @MousePos.performed += instance.OnMousePos;
             @MousePos.canceled += instance.OnMousePos;
+            @ThrowUp.started += instance.OnThrowUp;
+            @ThrowUp.performed += instance.OnThrowUp;
+            @ThrowUp.canceled += instance.OnThrowUp;
         }
 
         private void UnregisterCallbacks(IMovementActions instance)
@@ -247,6 +273,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @MousePos.started -= instance.OnMousePos;
             @MousePos.performed -= instance.OnMousePos;
             @MousePos.canceled -= instance.OnMousePos;
+            @ThrowUp.started -= instance.OnThrowUp;
+            @ThrowUp.performed -= instance.OnThrowUp;
+            @ThrowUp.canceled -= instance.OnThrowUp;
         }
 
         public void RemoveCallbacks(IMovementActions instance)
@@ -279,5 +308,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnForward(InputAction.CallbackContext context);
         void OnBackward(InputAction.CallbackContext context);
         void OnMousePos(InputAction.CallbackContext context);
+        void OnThrowUp(InputAction.CallbackContext context);
     }
 }

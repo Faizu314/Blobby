@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -8,19 +9,22 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask m_EdgesLayer;
 
     [SerializeField] private float Speed;
-    [SerializeField] private float RotationSpeed;
+    [SerializeField] private float InflationSpeed;
     [SerializeField] private float HookForce;
 
     private GameObject m_HookObj;
     private InputManager.PlayerInputs m_Inputs;
+    private Coroutine m_Coroutine = null;
+
+    public Vector2 GetPointPos(int i) => m_BodyController.PointPosition(i);
 
     private void Start() {
         m_Inputs = InputManager.Instance.playerInputs;
-        InputManager.Instance.OnJump += OnHookDeployed;
+        InputManager.Instance.OnHookButtonPressed += OnHookDeployed;
     }
 
     private void OnDestroy() {
-        InputManager.Instance.OnJump -= OnHookDeployed;
+        InputManager.Instance.OnHookButtonPressed -= OnHookDeployed;
     }
 
     private void FixedUpdate() {
@@ -32,6 +36,27 @@ public class PlayerController : MonoBehaviour
 
     private void Move(float amount) {
         m_BodyController.ApplyTorque(amount);
+    }
+
+    public void InflateTo(float target) {
+        if (m_Coroutine != null)
+            return;
+
+        m_Coroutine = StartCoroutine(nameof(InflateToCoroutine), target);
+    }
+
+    public void SetCollisionWith(Collider2D collider, bool shouldCollide) {
+        m_BodyController.SetCollisionWith(collider, shouldCollide);
+    }
+
+    private IEnumerator InflateToCoroutine(float target) {
+        while (Mathf.Abs(m_BodyController.Scale - target) > 0.01f) {
+            m_BodyController.Scale = Mathf.Lerp(m_BodyController.Scale, target, InflationSpeed * Time.deltaTime);
+
+            yield return null;
+        }
+
+        m_Coroutine = null;
     }
 
     private void OnHookDeployed(Vector2 mousePos) {
