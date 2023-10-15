@@ -1,18 +1,17 @@
 using Cinemachine;
+using Phezu.SceneManagingSystem;
+using Phezu.Util;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    public static GameManager Instance => m_Instance;
-    private static GameManager m_Instance;
+    [HideInInspector] public CinemachineTargetGroup TargetGroup;
+    [HideInInspector] public PlayerController PlayerController;
+    public GameConfiguration GameConfiguration;
+    public SceneLoadManager SceneManager;
 
-    public CinemachineTargetGroup TargetGroup;
-    public PlayerController PlayerController;
-
-    private void Awake() {
-        if (m_Instance != null)
-            Destroy(this);
-        m_Instance = this;
+    private void Start() {
+        SceneManager.LoadNewScene("Level", false);
     }
 
 }

@@ -6,31 +6,13 @@
             "id": "308e425b-8680-47a8-9e42-32bab3aa1647",
             "actions": [
                 {
-                    "name": "Click",
+                    "name": "PrimaryAction",
                     "type": "Button",
                     "id": "6651e651-7b4d-46cd-a9f1-c20a9ad4dadc",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Forward",
-                    "type": "Value",
-                    "id": "ae0b1799-fd55-472f-ac85-95a6e0fff8be",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Backward",
-                    "type": "Value",
-                    "id": "557a67fd-f509-4f69-9166-80073fdda29a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 },
                 {
                     "name": "MousePos",
@@ -42,13 +24,22 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "ThrowUp",
+                    "name": "SecondaryAction",
                     "type": "Button",
                     "id": "214af852-533a-4b3d-bbd5-c98494bdadb4",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Direction",
+                    "type": "Value",
+                    "id": "989bed29-69fc-4b11-a93f-8f7bbca86d2d",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -59,29 +50,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Desktop",
-                    "action": "Click",
+                    "action": "PrimaryAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "8143cf13-bfa5-4923-88a9-5adc41f81875",
-                    "path": "<Keyboard>/w",
+                    "id": "5c4ae7d9-0b68-48b3-a5b5-e6a61c6b93ee",
+                    "path": "<Touchscreen>/primaryTouch/press",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Desktop",
-                    "action": "Forward",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e7650654-7481-410f-a45f-323510e9b761",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Desktop",
-                    "action": "Backward",
+                    "groups": "Mobile",
+                    "action": "PrimaryAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -98,14 +78,80 @@
                 },
                 {
                     "name": "",
+                    "id": "e018bd2e-8ea9-4fce-a140-7d7523f91386",
+                    "path": "<Touchscreen>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mobile",
+                    "action": "MousePos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "420a7932-3121-442e-baed-31acfa86c899",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Desktop",
-                    "action": "ThrowUp",
+                    "action": "SecondaryAction",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "2e8c3e4f-33f8-49ec-aa22-9b05c0a153e4",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Direction",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "bc2a7f3d-2215-4e8f-add5-dc05493664d5",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Desktop",
+                    "action": "Direction",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "52d477b6-43f0-4492-bba3-47bd75baf152",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Desktop",
+                    "action": "Direction",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "a2df2101-61db-4ead-91c8-0a1f08f9b666",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Desktop",
+                    "action": "Direction",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "356987ea-e058-41a8-b213-171583a7d0fc",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Desktop",
+                    "action": "Direction",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
@@ -122,6 +168,17 @@
                 },
                 {
                     "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Mobile",
+            "bindingGroup": "Mobile",
+            "devices": [
+                {
+                    "devicePath": "<Touchscreen>",
                     "isOptional": false,
                     "isOR": false
                 }

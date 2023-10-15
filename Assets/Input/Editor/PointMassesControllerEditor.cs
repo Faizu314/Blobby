@@ -27,8 +27,6 @@ public class PointMassesControllerEditor : Editor
             foreach (var joint in allJoints) {
                 if (!joint.enableCollision)
                     Target.m_MassesToMasses.Add(joint);
-                else
-                    Target.m_MassesToEdges.Add(joint);
             }
         }
     }

@@ -8,17 +8,17 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - PointMasses
-  - 
+  - MidMass
   - PointEdges
   - Hook
   - Sticky
   - MetalBalls
-  - 
-  - 
+  - Player
+  - Stations
   - 
   - 
   - 
@@ -40,4 +40,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Environment
+    uniqueID: 3935141945
+    locked: 0
+  - name: Interactables
+    uniqueID: 4166380021
+    locked: 0
+  - name: Player
+    uniqueID: 2399726873
     locked: 0

@@ -28,31 +28,13 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             ""id"": ""308e425b-8680-47a8-9e42-32bab3aa1647"",
             ""actions"": [
                 {
-                    ""name"": ""Click"",
+                    ""name"": ""PrimaryAction"",
                     ""type"": ""Button"",
                     ""id"": ""6651e651-7b4d-46cd-a9f1-c20a9ad4dadc"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Forward"",
-                    ""type"": ""Value"",
-                    ""id"": ""ae0b1799-fd55-472f-ac85-95a6e0fff8be"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Backward"",
-                    ""type"": ""Value"",
-                    ""id"": ""557a67fd-f509-4f69-9166-80073fdda29a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""MousePos"",
@@ -64,13 +46,22 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""ThrowUp"",
+                    ""name"": ""SecondaryAction"",
                     ""type"": ""Button"",
                     ""id"": ""214af852-533a-4b3d-bbd5-c98494bdadb4"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Direction"",
+                    ""type"": ""Value"",
+                    ""id"": ""989bed29-69fc-4b11-a93f-8f7bbca86d2d"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -81,29 +72,18 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Desktop"",
-                    ""action"": ""Click"",
+                    ""action"": ""PrimaryAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""8143cf13-bfa5-4923-88a9-5adc41f81875"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""id"": ""5c4ae7d9-0b68-48b3-a5b5-e6a61c6b93ee"",
+                    ""path"": ""<Touchscreen>/primaryTouch/press"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Desktop"",
-                    ""action"": ""Forward"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e7650654-7481-410f-a45f-323510e9b761"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Desktop"",
-                    ""action"": ""Backward"",
+                    ""groups"": ""Mobile"",
+                    ""action"": ""PrimaryAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -120,14 +100,80 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""e018bd2e-8ea9-4fce-a140-7d7523f91386"",
+                    ""path"": ""<Touchscreen>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mobile"",
+                    ""action"": ""MousePos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""420a7932-3121-442e-baed-31acfa86c899"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Desktop"",
-                    ""action"": ""ThrowUp"",
+                    ""action"": ""SecondaryAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""2e8c3e4f-33f8-49ec-aa22-9b05c0a153e4"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Direction"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""bc2a7f3d-2215-4e8f-add5-dc05493664d5"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Desktop"",
+                    ""action"": ""Direction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""52d477b6-43f0-4492-bba3-47bd75baf152"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Desktop"",
+                    ""action"": ""Direction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""a2df2101-61db-4ead-91c8-0a1f08f9b666"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Desktop"",
+                    ""action"": ""Direction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""356987ea-e058-41a8-b213-171583a7d0fc"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Desktop"",
+                    ""action"": ""Direction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -148,16 +194,26 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isOR"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Mobile"",
+            ""bindingGroup"": ""Mobile"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Touchscreen>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
         }
     ]
 }");
         // Movement
         m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
-        m_Movement_Click = m_Movement.FindAction("Click", throwIfNotFound: true);
-        m_Movement_Forward = m_Movement.FindAction("Forward", throwIfNotFound: true);
-        m_Movement_Backward = m_Movement.FindAction("Backward", throwIfNotFound: true);
+        m_Movement_PrimaryAction = m_Movement.FindAction("PrimaryAction", throwIfNotFound: true);
         m_Movement_MousePos = m_Movement.FindAction("MousePos", throwIfNotFound: true);
-        m_Movement_ThrowUp = m_Movement.FindAction("ThrowUp", throwIfNotFound: true);
+        m_Movement_SecondaryAction = m_Movement.FindAction("SecondaryAction", throwIfNotFound: true);
+        m_Movement_Direction = m_Movement.FindAction("Direction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -219,20 +275,18 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     // Movement
     private readonly InputActionMap m_Movement;
     private List<IMovementActions> m_MovementActionsCallbackInterfaces = new List<IMovementActions>();
-    private readonly InputAction m_Movement_Click;
-    private readonly InputAction m_Movement_Forward;
-    private readonly InputAction m_Movement_Backward;
+    private readonly InputAction m_Movement_PrimaryAction;
     private readonly InputAction m_Movement_MousePos;
-    private readonly InputAction m_Movement_ThrowUp;
+    private readonly InputAction m_Movement_SecondaryAction;
+    private readonly InputAction m_Movement_Direction;
     public struct MovementActions
     {
         private @InputActions m_Wrapper;
         public MovementActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Click => m_Wrapper.m_Movement_Click;
-        public InputAction @Forward => m_Wrapper.m_Movement_Forward;
-        public InputAction @Backward => m_Wrapper.m_Movement_Backward;
+        public InputAction @PrimaryAction => m_Wrapper.m_Movement_PrimaryAction;
         public InputAction @MousePos => m_Wrapper.m_Movement_MousePos;
-        public InputAction @ThrowUp => m_Wrapper.m_Movement_ThrowUp;
+        public InputAction @SecondaryAction => m_Wrapper.m_Movement_SecondaryAction;
+        public InputAction @Direction => m_Wrapper.m_Movement_Direction;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -242,40 +296,34 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_MovementActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_MovementActionsCallbackInterfaces.Add(instance);
-            @Click.started += instance.OnClick;
-            @Click.performed += instance.OnClick;
-            @Click.canceled += instance.OnClick;
-            @Forward.started += instance.OnForward;
-            @Forward.performed += instance.OnForward;
-            @Forward.canceled += instance.OnForward;
-            @Backward.started += instance.OnBackward;
-            @Backward.performed += instance.OnBackward;
-            @Backward.canceled += instance.OnBackward;
+            @PrimaryAction.started += instance.OnPrimaryAction;
+            @PrimaryAction.performed += instance.OnPrimaryAction;
+            @PrimaryAction.canceled += instance.OnPrimaryAction;
             @MousePos.started += instance.OnMousePos;
             @MousePos.performed += instance.OnMousePos;
             @MousePos.canceled += instance.OnMousePos;
-            @ThrowUp.started += instance.OnThrowUp;
-            @ThrowUp.performed += instance.OnThrowUp;
-            @ThrowUp.canceled += instance.OnThrowUp;
+            @SecondaryAction.started += instance.OnSecondaryAction;
+            @SecondaryAction.performed += instance.OnSecondaryAction;
+            @SecondaryAction.canceled += instance.OnSecondaryAction;
+            @Direction.started += instance.OnDirection;
+            @Direction.performed += instance.OnDirection;
+            @Direction.canceled += instance.OnDirection;
         }
 
         private void UnregisterCallbacks(IMovementActions instance)
         {
-            @Click.started -= instance.OnClick;
-            @Click.performed -= instance.OnClick;
-            @Click.canceled -= instance.OnClick;
-            @Forward.started -= instance.OnForward;
-            @Forward.performed -= instance.OnForward;
-            @Forward.canceled -= instance.OnForward;
-            @Backward.started -= instance.OnBackward;
-            @Backward.performed -= instance.OnBackward;
-            @Backward.canceled -= instance.OnBackward;
+            @PrimaryAction.started -= instance.OnPrimaryAction;
+            @PrimaryAction.performed -= instance.OnPrimaryAction;
+            @PrimaryAction.canceled -= instance.OnPrimaryAction;
             @MousePos.started -= instance.OnMousePos;
             @MousePos.performed -= instance.OnMousePos;
             @MousePos.canceled -= instance.OnMousePos;
-            @ThrowUp.started -= instance.OnThrowUp;
-            @ThrowUp.performed -= instance.OnThrowUp;
-            @ThrowUp.canceled -= instance.OnThrowUp;
+            @SecondaryAction.started -= instance.OnSecondaryAction;
+            @SecondaryAction.performed -= instance.OnSecondaryAction;
+            @SecondaryAction.canceled -= instance.OnSecondaryAction;
+            @Direction.started -= instance.OnDirection;
+            @Direction.performed -= instance.OnDirection;
+            @Direction.canceled -= instance.OnDirection;
         }
 
         public void RemoveCallbacks(IMovementActions instance)
@@ -302,12 +350,20 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_DesktopSchemeIndex];
         }
     }
+    private int m_MobileSchemeIndex = -1;
+    public InputControlScheme MobileScheme
+    {
+        get
+        {
+            if (m_MobileSchemeIndex == -1) m_MobileSchemeIndex = asset.FindControlSchemeIndex("Mobile");
+            return asset.controlSchemes[m_MobileSchemeIndex];
+        }
+    }
     public interface IMovementActions
     {
-        void OnClick(InputAction.CallbackContext context);
-        void OnForward(InputAction.CallbackContext context);
-        void OnBackward(InputAction.CallbackContext context);
+        void OnPrimaryAction(InputAction.CallbackContext context);
         void OnMousePos(InputAction.CallbackContext context);
-        void OnThrowUp(InputAction.CallbackContext context);
+        void OnSecondaryAction(InputAction.CallbackContext context);
+        void OnDirection(InputAction.CallbackContext context);
     }
 }

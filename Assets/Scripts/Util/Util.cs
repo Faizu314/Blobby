@@ -1,7 +1,5 @@
 ﻿using System;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
-using UnityEngine.Rendering.UI;
 
 public static class Util {
 
@@ -14,6 +12,31 @@ public static class Util {
     public static Vector2 VectorFromAngle(float angle) {
         angle *= Mathf.Deg2Rad;
         return new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+    }
+
+    /// <summary>
+    /// Returns a after removing b components, meaning it will be orthogonal to b or zero.
+    /// </summary>
+    public static Vector2 RemoveComponent(Vector2 a, Vector2 b) {
+        b.Normalize();
+        b *= Vector2.Dot(a, b);
+        return a - b;
+    }
+
+    public static Vector2 RandomUnitVector(float minDegrees, float maxDegrees) {
+        float minRads = minDegrees * Mathf.Deg2Rad;
+        float maxRads = maxDegrees * Mathf.Deg2Rad;
+        float angle = Mathf.Lerp(minRads, maxRads, UnityEngine.Random.value);
+
+        return new(Mathf.Cos(angle), Mathf.Sin(angle));
+    }
+
+    public static Vector2 RandomContinuousVector(float time, float seed) {
+        Vector2 vec = Vector2.zero;
+        vec.x = Mathf.PerlinNoise(seed + time, seed + time) * 2f - 1f;
+        vec.y = Mathf.PerlinNoise(seed + 0.41484f + time, seed + 0.41484f + time) * 2f - 1f;
+
+        return vec;
     }
 
     public static bool IsInLayerMask(LayerMask layermask, int layer) {
@@ -55,4 +78,11 @@ public static class Util {
         return intersectionCount % 2 == 1;
     }
 
+}
+
+[Serializable]
+public struct JointSettings {
+    public float Frequency;
+    public float Distance;
+    public float Damping;
 }

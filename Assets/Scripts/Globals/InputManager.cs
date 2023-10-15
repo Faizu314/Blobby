@@ -5,15 +5,10 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager Instance => m_Instance;
     private static InputManager m_Instance;
-    private InputActions m_Input;
-    private Camera m_Camera;
 
-    public delegate void HookAction(Vector2 mousePos);
-    public event HookAction OnHookButtonPressed;
-    public delegate void Action();
-    public event Action OnThrowUpButtonPressed;
+    private InputActions m_Inputs;
 
-    public PlayerInputs playerInputs = new();
+    public GlobalInputs globalInputs = new();
 
     private void Awake() {
         if (m_Instance != null)
@@ -22,18 +17,9 @@ public class InputManager : MonoBehaviour
     }
 
     private void Start() {
-        m_Camera = Camera.main;
+        m_Inputs = new InputActions();
 
-        m_Input = new InputActions();
-
-        m_Input.Movement.Enable();
-        m_Input.Movement.Click.performed += _ => OnHookButtonPressed?.Invoke(GetMouseWorldPos());
-        m_Input.Movement.ThrowUp.performed += _ => OnThrowUpButtonPressed?.Invoke();
-    }
-
-    private Vector2 GetMouseWorldPos() {
-        var mousePos = m_Input.Movement.MousePos.ReadValue<Vector2>();
-        return m_Camera.ScreenToWorldPoint(mousePos);
+        m_Inputs.Movement.Enable();
     }
 
     private void Update() {
@@ -42,19 +28,39 @@ public class InputManager : MonoBehaviour
     }
 
     private void ResetState() {
-        playerInputs.MovingForward = playerInputs.MovingBackward = false;
+        globalInputs.MoveDir = Vector2.zero;
+        globalInputs.CursorPos = Vector2.one / 2f;
+        globalInputs.PrimaryAction = globalInputs.SecondaryAction = false;
     }
 
     private void UpdateState() {
-        if (m_Input.Movement.Forward.IsInProgress())
-            playerInputs.MovingForward = true;
-        else if (m_Input.Movement.Backward.IsPressed())
-            playerInputs.MovingBackward = true;
+        globalInputs.MoveDir = m_Inputs.Movement.Direction.ReadValue<Vector2>();
+        globalInputs.CursorPos = ToViewPortSpace(m_Inputs.Movement.MousePos.ReadValue<Vector2>());
+        globalInputs.PrimaryAction = m_Inputs.Movement.PrimaryAction.IsPressed();
+        globalInputs.SecondaryAction = m_Inputs.Movement.SecondaryAction.IsPressed();
+    }
+
+    private Vector2 ToViewPortSpace(Vector2 pos) {
+        return Camera.main.ScreenToViewportPoint(pos);
     }
 
     [Serializable]
-    public class PlayerInputs {
-        public bool MovingForward;
-        public bool MovingBackward;
+    public class GlobalInputs {
+        /// <summary>
+        /// Normalized.
+        /// </summary>
+        public Vector2 MoveDir;
+        /// <summary>
+        /// In Viewport Space.
+        /// </summary>
+        public Vector2 CursorPos;
+        /// <summary>
+        /// Was pressed this frame.
+        /// </summary>
+        public bool PrimaryAction;
+        /// <summary>
+        /// Was pressed this frame.
+        /// </summary>
+        public bool SecondaryAction;
     }
 }

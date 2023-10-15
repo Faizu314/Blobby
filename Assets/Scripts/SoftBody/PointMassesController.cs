@@ -1,53 +1,45 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PointMassesController : MonoBehaviour {
 
+    [Serializable]
+    public struct SoftBodyConfig {
+        [Tooltip("PA = nRT, PressureConstant = nRT.")]
+        public float m_PressureConstant;
+        [Tooltip("P = AnimCurve(Area/BaseArea) * PressureConstant")]
+        public AnimationCurve m_PressureByArea;
+
+        public float m_MassesDamping;
+        public float m_MassesFrequency;
+
+        public float m_EdgesDamping;
+        public float m_EdgesFrequency;
+
+        public float m_MassesLinearDrag;
+        public float m_MassesGravityScale;
+    }
+
     [SerializeField] private List<PointMass> m_PointMasses;
     [SerializeField] private List<BoxCollider2D> m_EdgeColliders;
     [SerializeField] private PointMass m_MidMass;
-    [SerializeField] private Rigidbody2D m_FrameController;
 
     [Tooltip("Rate of change of point masses angle deviation calculation.")]
     [SerializeField] private float m_DevRateOfChange;
     [SerializeField] private float m_MaxRotationByTorque;
 
-    [Tooltip("PA = nRT, PressureConstant = nRT.")]
-    [SerializeField] private float m_PressureConstant;
-    [Tooltip("P = AnimCurve(Area/BaseArea) * PressureConstant")]
-    [SerializeField] private AnimationCurve m_PressureByArea;
-
     [Header("Spring Joints")][Space(5)]
     [SerializeField] public List<SpringJoint2D> m_MassesToMasses;
-    [SerializeField] public List<SpringJoint2D> m_MassesToEdges;
     [SerializeField] public List<SpringJoint2D> m_EdgesToMasses;
-    [SerializeField] public List<SpringJoint2D> m_FrameToMasses;
 
-    [Header("Point Masses Joint Settings")][Space(5)]
-    [SerializeField] private float m_MassesDamping;
-    [SerializeField] private float m_MassesFrequency;
+    [SerializeField] private SoftBodyConfig m_Config;
 
-    [Header("Point Masses to Edges Joint Settings")][Space(5)]
-    [SerializeField] private float m_EdgesDamping;
-    [SerializeField] private float m_EdgesFrequency;
-
-    [Header("Reference Points to Point Masses Joint Settings")]
-    [SerializeField] private float m_FrameDamping;
-    [SerializeField] private float m_FrameFrequency;
-
-    [Header("RigidBody settings")][Space(5)]
-    [SerializeField] private float m_MassesLinearDrag;
-    [SerializeField] private float m_MassesGravityScale;
-
+    [Space(10)]
     public float Scale = 1f;
 
     [Header("Debug")][Space(5)]
     [SerializeField] private bool m_UpdateSettingsEveryFrame;
-
-
-    public float PointMassesDeviation = 0f;
-    private float m_PointMassesDeviation = 0f;
-    private float m_PrevPointMassesDeviation = 0f;
 
     public Vector2 AvgPosition { 
         get {
@@ -59,14 +51,37 @@ public class PointMassesController : MonoBehaviour {
         } 
     }
 
-    public Vector2 Position => m_MidMass.Position;
+    public Vector2 AvgVelocity {
+        get {
+            var vel = Vector2.zero;
+            foreach (var point in m_PointMasses)
+                vel += point.Rb.velocity;
 
-    public Vector3 PointPosition(int i) {
-        return m_PointMasses[i].Position;
+            return vel / m_PointMasses.Count;
+        }
     }
 
-    private Rigidbody2D[] m_Rigidbodies;
+    public Vector2 Position => m_MidMass.Position;
 
+    public Vector3 GetPointPosition(int i) {
+        return m_PointMasses[i].Position;
+    }
+    public Vector3 GetPointLocalPosition(int i) {
+        return m_PointMasses[i].transform.localPosition;
+    }
+    public Vector3 MidMassPosition => m_MidMass.Position;
+    public Vector3 MidMassLocalposition => m_MidMass.transform.localPosition;
+    public int PointMassesCount => m_PointMasses.Count;
+    public float MassesFrequency => m_Config.m_MassesFrequency;
+
+    public int GroundedPointsCount { get; private set; }
+
+    public Vector2 GroundNormal { get; private set; }
+
+    public float PointMassesDeviation = 0f;
+    private float m_PointMassesDeviation = 0f;
+
+    private Rigidbody2D[] m_Rigidbodies;
     private List<float> m_ReferenceBaseAngles;
     private List<float> m_BaseJointDist;
     private List<float> m_BaseColLength;
@@ -74,22 +89,14 @@ public class PointMassesController : MonoBehaviour {
     private List<float> m_ReferenceRadii;
     private float m_ReferenceArea;
 
-    private void Start() {
+    public void Init() {
         m_Rigidbodies = GetComponentsInChildren<Rigidbody2D>();
 
         m_BaseJointDist = new();
         foreach (var joint in m_MassesToMasses) {
             joint.enableCollision = false;
-            joint.frequency = m_MassesFrequency;
-            joint.dampingRatio = m_MassesDamping;
             joint.autoConfigureDistance = false;
             m_BaseJointDist.Add(joint.distance);
-        }
-        foreach (var joint in m_MassesToEdges) {
-            joint.enableCollision = false;
-            joint.frequency = m_EdgesFrequency;
-            joint.dampingRatio = m_EdgesDamping;
-            joint.autoConfigureDistance = false;
         }
 
         m_BaseColLength = new();
@@ -98,11 +105,6 @@ public class PointMassesController : MonoBehaviour {
         m_BaseEdgeAnchors = new();
         foreach (var joint in m_EdgesToMasses)
             m_BaseEdgeAnchors.Add(joint.anchor);
-
-        foreach (var comp in m_Rigidbodies) {
-            comp.drag = m_MassesLinearDrag;
-            comp.gravityScale = m_MassesGravityScale;
-        }
 
         m_ReferenceArea = GetCurrArea(); //point masses must start as the original shape.
 
@@ -123,36 +125,79 @@ public class PointMassesController : MonoBehaviour {
             m_ReferenceRadii.Add((m_PointMasses[i].Position - m_MidMass.Position).magnitude);
     }
 
-    private void ApplyConfiguration() {
+    public void SetConfiguration(SoftBodyConfig config) {
+        m_Config = config;
+    }
+    public void ApplyConfiguration() {
         foreach (var joint in m_MassesToMasses) {
-            joint.frequency = m_MassesFrequency;
-            joint.dampingRatio = m_MassesDamping;
+            joint.frequency = m_Config.m_MassesFrequency;
+            joint.dampingRatio = m_Config.m_MassesDamping;
         }
-        foreach (var joint in m_MassesToEdges) {
-            joint.frequency = m_EdgesFrequency;
-            joint.dampingRatio = m_EdgesDamping;
-        }
-        foreach (var joint in m_FrameToMasses) {
-            joint.frequency = m_FrameFrequency * Scale;
-            joint.dampingRatio = m_FrameDamping;
+        foreach (var joint in m_EdgesToMasses) {
+            joint.frequency = m_Config.m_EdgesFrequency;
+            joint.dampingRatio = m_Config.m_EdgesDamping;
         }
 
         foreach (var comp in m_Rigidbodies) {
-            comp.drag = m_MassesLinearDrag;
-            comp.gravityScale = m_MassesGravityScale;
+            comp.drag = m_Config.m_MassesLinearDrag;
+            comp.gravityScale = m_Config.m_MassesGravityScale;
         }
     }
 
-    private void Update() {
+    public void UpdateTick() {
         if (m_UpdateSettingsEveryFrame)
             ApplyConfiguration();
-
         Inflate();
     }
 
-    private void Inflate() {
-        m_FrameController.transform.localScale = Vector3.one * Scale;
+    public void FixedUpdateTick() {
+        ApplyNormalPressure();
+        CheckIsGrounded();
+        UpdatePointMassesDeviation();
+    }
 
+    public void ApplyForceOnMidMass(Vector2 force, ForceMode2D mode = ForceMode2D.Force) {
+        m_MidMass.Rb.AddForce(force, mode);
+    }
+    public void ApplyForceOnAllMasses(Vector2 force, ForceMode2D mode = ForceMode2D.Force) {
+        for (int i = 0; i < m_PointMasses.Count; i++)
+            m_PointMasses[i].Rb.AddForce(force, mode);
+        m_MidMass.Rb.AddForce(force, mode);
+    }
+    public List<PointMass> GetGroundedPointMasses() {
+        List<PointMass> groundedMasses = new();
+
+        for (int i = 0; i < m_PointMasses.Count; i++) {
+            if (m_PointMasses[i].IsGrounded) {
+                groundedMasses.Add(m_PointMasses[i]);
+            }
+        }
+
+        return groundedMasses;
+    }
+
+    public void UnfreezePoints() {
+        foreach (var point in m_PointMasses)
+            point.SetFreeze(false);
+    }
+
+    private void CheckIsGrounded() {
+        int groundedCount = 0;
+        Vector2 groundedPointsAvgPos = Vector2.zero;
+
+        for (int i = 0; i < m_PointMasses.Count; i++) {
+            if (m_PointMasses[i].IsGrounded) {
+                groundedCount++;
+                groundedPointsAvgPos += m_PointMasses[i].Position;
+            }
+        }
+        groundedPointsAvgPos /= groundedCount;
+
+        GroundedPointsCount = groundedCount;
+        GroundNormal = (m_MidMass.Position - groundedPointsAvgPos).normalized;
+    }
+
+    private void Inflate() {
         for (int i = 0; i < m_MassesToMasses.Count; i++)
             m_MassesToMasses[i].distance = m_BaseJointDist[i] * Scale;
 
@@ -161,39 +206,6 @@ public class PointMassesController : MonoBehaviour {
 
         for (int i = 0; i < m_EdgesToMasses.Count; i++)
             m_EdgesToMasses[i].anchor = m_BaseEdgeAnchors[i] * Scale;
-
-        foreach (var joint in m_FrameToMasses)
-            joint.frequency = m_FrameFrequency * Scale;
-    }
-
-    private void FixedUpdate() {
-        m_FrameController.rotation = PointMassesDeviation;
-        ApplyNormalPressure();
-    }
-
-    public void ApplyTorque(float torque) {
-        m_FrameController.transform.Rotate(Vector3.back * torque * Time.deltaTime);
-
-        //if (Mathf.Abs((PointMassesDeviation - m_PrevPointMassesDeviation) / Time.fixedDeltaTime) > m_MaxRotationByTorque)
-        //    return;
-
-        //float distSum = 0f;
-        //for (int i = 0; i < m_PointMasses.Count; i++)
-        //    distSum += Vector3.Distance(m_PointMasses[i].Position, m_MidMass.Position);
-
-        //float torquePerMass = -torque / distSum;
-
-        //for (int i = 0; i < m_PointMasses.Count; i++) {
-        //    Vector2 normal = (m_PointMasses[i].Position - m_MidMass.Position).normalized;
-        //    Vector2 force = Vector3.Cross(normal, Vector3.back);
-        //    force = (force * torquePerMass) + (normal * Mathf.Abs(torquePerMass));
-        //    m_PointMasses[i].Rb.AddForce(force);
-        //}
-    }
-
-    public void SetCollisionWith(Collider2D collider, bool shouldCollide) {
-        foreach (var col in m_EdgeColliders)
-            Physics2D.IgnoreCollision(col, collider, !shouldCollide);
     }
     
     private float GetCurrArea() {
@@ -218,11 +230,8 @@ public class PointMassesController : MonoBehaviour {
         float area = GetCurrArea() / m_ReferenceArea;
         if (Mathf.Abs(area) < 0.01f)
             area = 0.01f * Mathf.Sign(area);
-        float pressure = m_PressureConstant * m_PressureByArea.Evaluate(area);
+        float pressure = m_Config.m_PressureConstant * m_Config.m_PressureByArea.Evaluate(area);
 
-        m_PrevPointMassesDeviation = PointMassesDeviation;
-        m_PointMassesDeviation = GetPointMassesDeviation();
-        PointMassesDeviation = Mathf.LerpAngle(PointMassesDeviation, m_PointMassesDeviation, Time.fixedDeltaTime * m_DevRateOfChange);
         Vector2 normalForce;
         for (int i = 0; i < m_PointMasses.Count; i++) {
             float angle = m_ReferenceBaseAngles[i] + PointMassesDeviation;
@@ -230,6 +239,11 @@ public class PointMassesController : MonoBehaviour {
 
             m_PointMasses[i].ApplyNormalForce(normalForce * pressure);
         }
+    }
+
+    private void UpdatePointMassesDeviation() {
+        m_PointMassesDeviation = GetPointMassesDeviation();
+        PointMassesDeviation = Mathf.LerpAngle(PointMassesDeviation, m_PointMassesDeviation, Time.deltaTime * m_DevRateOfChange);
     }
 
     private float GetPointMassesDeviation() {
