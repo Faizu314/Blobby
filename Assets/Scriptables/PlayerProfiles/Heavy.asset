@@ -17,8 +17,8 @@ MonoBehaviour:
     Strength: 2
   - Threshold: 0.2
     Strength: 3
-  ChargeForce: 55
-  InflationLevel: 0.9
+  ChargeForce: 0
+  InflationLevel: 0.8
   CanBreak: 0
   CanFloat: 0
   SoftBodyConfig:
@@ -51,7 +51,5 @@ MonoBehaviour:
     m_MassesFrequency: 8
     m_EdgesDamping: 1
     m_EdgesFrequency: 0
-    m_FrameDamping: 0.1
-    m_FrameFrequency: 2
     m_MassesLinearDrag: 0.2
     m_MassesGravityScale: 8

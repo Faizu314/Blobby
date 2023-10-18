@@ -10,9 +10,11 @@ public class PointEdge : MonoBehaviour {
     private List<ContactPoint2D> m_Contacts = new();
     public bool IsGrounded { get; private set; }
 
-    private void OnCollisionStay2D(Collision2D collision) {
+    private void OnCollisionEnter2D(Collision2D collision) {
         if (!Util.IsInLayerMask(m_GroundedLayerMask, collision.gameObject.layer))
             return;
+        StickyMoveable collidingSurface = collision.gameObject.GetComponent<StickyMoveable>();
+
         if (!m_MassA.IsGrounded && !m_MassB.IsGrounded) {
             collision.GetContacts(m_Contacts);
             foreach (var contact in m_Contacts) {
@@ -20,9 +22,9 @@ public class PointEdge : MonoBehaviour {
                 float distToB = Vector2.SqrMagnitude(contact.point - m_MassB.Position);
 
                 if (distToA < distToB)
-                    m_MassA.IsGrounded = true;
+                    m_MassA.OnGrounded(collidingSurface, true);
                 else
-                    m_MassB.IsGrounded = true;
+                    m_MassB.OnGrounded(collidingSurface, true);
             }
         }
     }
@@ -30,7 +32,7 @@ public class PointEdge : MonoBehaviour {
     private void OnCollisionExit2D(Collision2D collision) {
         if (!Util.IsInLayerMask(m_GroundedLayerMask, collision.gameObject.layer))
             return;
-        m_MassA.IsGrounded = false;
-        m_MassB.IsGrounded = false;
+        m_MassA.OnGrounded(null, false);
+        m_MassB.OnGrounded(null, false);
     }
 }

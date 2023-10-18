@@ -5,14 +5,12 @@ using UnityEngine;
 public class EatableBase : MonoBehaviour, IEatable
 {
     [SerializeField] private LayerMask m_PointMassesLayer;
-    [SerializeField] private float m_MassesDragWhenClose;
-    [SerializeField] private float m_SpatOutForceStrength;
     [SerializeField] private List<Transform> m_ColTestPoints;
     [SerializeField] private PlayerProfile m_PlayerProfile;
+    [SerializeField] protected Collider2D m_Collider;
 
     private List<bool> m_IsColPointInside;
 
-    private Dictionary<Rigidbody2D, float> m_EnteredRbs = new();
     private bool m_IsInsidePlayer;
     private bool m_WaitingAfterExiting = false;
     private bool m_WaitingAfterEntering = false;
@@ -30,6 +28,7 @@ public class EatableBase : MonoBehaviour, IEatable
 
     public virtual void OnGrab(IGrabber grabber) {
         m_Grabber = grabber;
+        m_Collider.enabled = false;
         m_Rb.gravityScale = 0f;
 
         StartCoroutine(nameof(WaitAfterCapture), 2f);
@@ -74,33 +73,6 @@ public class EatableBase : MonoBehaviour, IEatable
         m_Player = GameManager.Instance.PlayerController;
     }
 
-    protected virtual void OnTriggerEnter2D(Collider2D collision) {
-        if (m_IsInsidePlayer)
-            return;
-
-        if (!Util.IsInLayerMask(m_PointMassesLayer, collision.gameObject.layer))
-            return;
-
-        if (m_EnteredRbs.ContainsKey(collision.attachedRigidbody))
-            return;
-
-        m_EnteredRbs.Add(collision.attachedRigidbody, collision.attachedRigidbody.drag);
-
-        collision.attachedRigidbody.drag = m_MassesDragWhenClose;
-    }
-
-    protected virtual void OnTriggerExit2D(Collider2D collision) {
-        if (!Util.IsInLayerMask(m_PointMassesLayer, collision.gameObject.layer))
-            return;
-
-        if (!m_EnteredRbs.TryGetValue(collision.attachedRigidbody, out float value))
-            return;
-
-        collision.attachedRigidbody.drag = value;
-
-        m_EnteredRbs.Remove(collision.attachedRigidbody);
-    }
-
     protected virtual void FixedUpdate() {
         if (!m_IsInsidePlayer && !m_WaitingAfterExiting)
             OutsideTick();
@@ -140,11 +112,7 @@ public class EatableBase : MonoBehaviour, IEatable
     private void OnEatenByPlayer() {
         TryForceGrabberRelease();
 
-        foreach (var pair in m_EnteredRbs)
-            pair.Key.drag = pair.Value;
-
-        m_EnteredRbs.Clear();
-
+        m_Collider.enabled = false;
         m_Rb.gravityScale = 0f;
 
         m_Player.OnEatableCaptured(this);
@@ -153,6 +121,7 @@ public class EatableBase : MonoBehaviour, IEatable
     }
 
     private void ExitPlayer() {
+        m_Collider.enabled = true;
         m_Rb.gravityScale = 1f;
 
         m_Player.OnEatableReleased(this);

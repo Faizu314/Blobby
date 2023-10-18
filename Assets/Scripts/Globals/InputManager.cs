@@ -1,14 +1,20 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem.EnhancedTouch;
 
 public class InputManager : MonoBehaviour
 {
+#if UNITY_EDITOR
+    [SerializeField] private bool m_TestUnityRemote;
+#endif
+
     public static InputManager Instance => m_Instance;
     private static InputManager m_Instance;
 
     private InputActions m_Inputs;
 
-    public GlobalInputs globalInputs = new();
+    public HardwareInputs hardwareInputs = new();
+    public InterfaceInputs interfaceInputs = new();
 
     private void Awake() {
         if (m_Instance != null)
@@ -17,35 +23,65 @@ public class InputManager : MonoBehaviour
     }
 
     private void Start() {
+        EnhancedTouchSupport.Enable();
+
         m_Inputs = new InputActions();
 
         m_Inputs.Movement.Enable();
     }
 
+
+#if UNITY_EDITOR
+    private void Update() {
+        ResetState();
+
+        if (m_TestUnityRemote)
+            UpdateStateOldInput();
+        else
+            UpdateState();
+    }
+
+    private void UpdateStateOldInput() {
+        if (Input.touchCount < 1)
+            return;
+        UnityEngine.Touch primaryTouch = Input.GetTouch(0);
+        hardwareInputs.MoveDir = primaryTouch.deltaPosition.normalized;
+        hardwareInputs.CursorPos = new(primaryTouch.position.x / Screen.width, primaryTouch.position.y / Screen.height);
+        hardwareInputs.PrimaryAction = true;
+        hardwareInputs.PrimaryActionDown = primaryTouch.phase == TouchPhase.Began;
+    }
+
+#else
     private void Update() {
         ResetState();
         UpdateState();
     }
+#endif
 
     private void ResetState() {
-        globalInputs.MoveDir = Vector2.zero;
-        globalInputs.CursorPos = Vector2.one / 2f;
-        globalInputs.PrimaryAction = globalInputs.SecondaryAction = false;
+        hardwareInputs.MoveDir = Vector2.one / 2f;
+        hardwareInputs.CursorPos = Vector2.one / 2f;
     }
 
     private void UpdateState() {
-        globalInputs.MoveDir = m_Inputs.Movement.Direction.ReadValue<Vector2>();
-        globalInputs.CursorPos = ToViewPortSpace(m_Inputs.Movement.MousePos.ReadValue<Vector2>());
-        globalInputs.PrimaryAction = m_Inputs.Movement.PrimaryAction.IsPressed();
-        globalInputs.SecondaryAction = m_Inputs.Movement.SecondaryAction.IsPressed();
+        hardwareInputs.MoveDir = m_Inputs.Movement.Direction.ReadValue<Vector2>();
+        hardwareInputs.CursorPos = ToViewPortSpace(m_Inputs.Movement.CursorPos.ReadValue<Vector2>());
+        if (SystemInfo.deviceType == DeviceType.Handheld) {
+            var touches = UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches;
+            if (touches.Count == 1)
+                hardwareInputs.CursorPos = ToViewPortSpace(touches[0].screenPosition);
+        }
+
+        hardwareInputs.PrimaryAction = m_Inputs.Movement.PrimaryAction.IsPressed();
+        hardwareInputs.PrimaryActionDown = m_Inputs.Movement.PrimaryAction.WasPressedThisFrame();
     }
 
     private Vector2 ToViewPortSpace(Vector2 pos) {
-        return Camera.main.ScreenToViewportPoint(pos);
+        return new(pos.x / Screen.width, pos.y / Screen.height);
     }
 
     [Serializable]
-    public class GlobalInputs {
+    public class HardwareInputs {
         /// <summary>
         /// Normalized.
         /// </summary>
@@ -57,10 +93,17 @@ public class InputManager : MonoBehaviour
         /// <summary>
         /// Was pressed this frame.
         /// </summary>
-        public bool PrimaryAction;
+        public bool PrimaryActionDown;
         /// <summary>
-        /// Was pressed this frame.
+        /// Is down this frame.
         /// </summary>
-        public bool SecondaryAction;
+        public bool PrimaryAction;
+    }
+
+    [Serializable]
+    public class InterfaceInputs {
+        public Vector2 PrimaryJoyStick;
+        public Vector2 SecondaryJoyStick;
+        public bool PrimaryButton;
     }
 }

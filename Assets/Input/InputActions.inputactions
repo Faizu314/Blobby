@@ -15,22 +15,13 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "MousePos",
+                    "name": "CursorPos",
                     "type": "Value",
                     "id": "3269daf9-29c8-4898-be58-7e562c96b24b",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "SecondaryAction",
-                    "type": "Button",
-                    "id": "214af852-533a-4b3d-bbd5-c98494bdadb4",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 },
                 {
                     "name": "Direction",
@@ -72,29 +63,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Desktop",
-                    "action": "MousePos",
+                    "action": "CursorPos",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "e018bd2e-8ea9-4fce-a140-7d7523f91386",
-                    "path": "<Touchscreen>/position",
+                    "path": "<Touchscreen>/primaryTouch/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "Mobile",
-                    "action": "MousePos",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "420a7932-3121-442e-baed-31acfa86c899",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Desktop",
-                    "action": "SecondaryAction",
+                    "action": "CursorPos",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

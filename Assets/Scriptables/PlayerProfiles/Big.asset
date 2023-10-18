@@ -17,7 +17,7 @@ MonoBehaviour:
     Strength: 1.5
   - Threshold: 0.2
     Strength: 2
-  ChargeForce: 80
+  ChargeForce: 0
   InflationLevel: 1.5
   CanBreak: 1
   CanFloat: 0
@@ -48,10 +48,8 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MassesDamping: 0.3
-    m_MassesFrequency: 8
+    m_MassesFrequency: 6
     m_EdgesDamping: 1
     m_EdgesFrequency: 0
-    m_FrameDamping: 0.1
-    m_FrameFrequency: 2
     m_MassesLinearDrag: 0.2
     m_MassesGravityScale: 2

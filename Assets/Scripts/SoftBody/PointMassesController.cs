@@ -79,6 +79,7 @@ public class PointMassesController : MonoBehaviour {
     public Vector2 GroundNormal { get; private set; }
 
     public float PointMassesDeviation = 0f;
+    private float m_PrevPointMassesDeviation = 0f;
     private float m_PointMassesDeviation = 0f;
 
     private Rigidbody2D[] m_Rigidbodies;
@@ -156,6 +157,41 @@ public class PointMassesController : MonoBehaviour {
         UpdatePointMassesDeviation();
     }
 
+    public void ApplyTorque(float torque) {
+        if (Mathf.Abs((m_PointMassesDeviation - m_PrevPointMassesDeviation) / Time.fixedDeltaTime) > m_MaxRotationByTorque)
+            return;
+
+        float distSum = 0f;
+        for (int i = 0; i < m_PointMasses.Count; i++)
+            distSum += Vector3.Distance(m_PointMasses[i].Position, m_MidMass.Position);
+        //if (Mathf.Abs((PointMassesDeviation - m_PrevPointMassesDeviation) / Time.fixedDeltaTime) > m_MaxRotationByTorque)
+        //    return;
+
+        float torquePerMass = -torque / distSum;
+        //float distSum = 0f;
+        //for (int i = 0; i < m_PointMasses.Count; i++)
+        //    distSum += Vector3.Distance(m_PointMasses[i].Position, m_MidMass.Position);
+
+        for (int i = 0; i < m_PointMasses.Count; i++) {
+            Vector2 normal = (m_PointMasses[i].Position - m_MidMass.Position).normalized;
+            Vector2 force = Vector3.Cross(normal, Vector3.back);
+            force = (force * torquePerMass) + (normal * Mathf.Abs(torquePerMass));
+            m_PointMasses[i].Rb.AddForce(force);
+        }
+        //float torquePerMass = -torque / distSum;
+
+        //for (int i = 0; i < m_PointMasses.Count; i++) {
+        //    Vector2 normal = (m_PointMasses[i].Position - m_MidMass.Position).normalized;
+        //    Vector2 force = Vector3.Cross(normal, Vector3.back);
+        //    force = (force * torquePerMass) + (normal * Mathf.Abs(torquePerMass));
+        //    m_PointMasses[i].Rb.AddForce(force);
+        //}
+    }
+
+    public void SetCollisionWith(Collider2D collider, bool shouldCollide) {
+        foreach (var col in m_EdgeColliders)
+            Physics2D.IgnoreCollision(col, collider, !shouldCollide);
+    }
     public void ApplyForceOnMidMass(Vector2 force, ForceMode2D mode = ForceMode2D.Force) {
         m_MidMass.Rb.AddForce(force, mode);
     }
@@ -227,7 +263,7 @@ public class PointMassesController : MonoBehaviour {
     }
 
     private void ApplyNormalPressure() {
-        float area = GetCurrArea() / m_ReferenceArea;
+        float area = GetCurrArea() / (m_ReferenceArea * Scale * Scale);
         if (Mathf.Abs(area) < 0.01f)
             area = 0.01f * Mathf.Sign(area);
         float pressure = m_Config.m_PressureConstant * m_Config.m_PressureByArea.Evaluate(area);
@@ -242,6 +278,7 @@ public class PointMassesController : MonoBehaviour {
     }
 
     private void UpdatePointMassesDeviation() {
+        m_PrevPointMassesDeviation = m_PointMassesDeviation;
         m_PointMassesDeviation = GetPointMassesDeviation();
         PointMassesDeviation = Mathf.LerpAngle(PointMassesDeviation, m_PointMassesDeviation, Time.deltaTime * m_DevRateOfChange);
     }

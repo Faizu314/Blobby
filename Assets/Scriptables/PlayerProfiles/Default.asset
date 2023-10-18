@@ -15,9 +15,7 @@ MonoBehaviour:
   ReleaseLevels:
   - Threshold: 0
     Strength: 2
-  - Threshold: 0.2
-    Strength: 3
-  ChargeForce: 55
+  ChargeForce: 0
   InflationLevel: 1
   CanBreak: 0
   CanFloat: 0
@@ -48,10 +46,8 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MassesDamping: 0.3
-    m_MassesFrequency: 8
+    m_MassesFrequency: 12
     m_EdgesDamping: 1
     m_EdgesFrequency: 0
-    m_FrameDamping: 0.1
-    m_FrameFrequency: 2
     m_MassesLinearDrag: 0.2
     m_MassesGravityScale: 3.5

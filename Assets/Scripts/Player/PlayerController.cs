@@ -7,25 +7,28 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerInputs m_Inputs;
     [SerializeField] private PlayerState m_State;
     [SerializeField] private PlayerProfile m_DefaultPlayerProfile;
+
+    [SerializeField] private float m_RotForce;
     [SerializeField] private int m_MinPointsForGrounded;
-
-    [SerializeField] private LayerMask m_EdgesLayer;
-
+    [SerializeField] private float m_ReleaseWaitInSeconds;
     [SerializeField] private float m_InflationSpeed;
     [SerializeField] private float m_MaxEatenFollowSpeed;
 
     private PlayerProfile m_CurrProfile;
     private IEatable m_Eatable = null;
     private Coroutine m_InflateCoroutine = null;
+    private WaitForSeconds m_ReleaseWait;
     private Vector2 m_ReleaseVector;
     private float m_EatenFollowSpeed = 0f;
     private bool m_IsCharging;
+    private bool m_IsWaitingAfterRelease;
 
     public Vector2 GetPointPos(int i) => m_BodyController.GetPointPosition(i);
     public PlayerState State => m_State;
 
     private void Awake() {
         GameManager.Instance.PlayerController = this;
+        m_ReleaseWait = new(m_ReleaseWaitInSeconds);
     }
 
     private void Start() {
@@ -72,15 +75,17 @@ public class PlayerController : MonoBehaviour
     #region Movement
 
     private void MovementTick() {
-        if (m_Inputs.WasPrimaryDownFixed && m_State.IsGrounded && !m_IsCharging) {
+        if (!m_IsWaitingAfterRelease && !m_Inputs.WasSecondaryDownFixed && m_State.IsGrounded && !m_IsCharging) {
             BeginCharge();
         }
-        else if (m_Inputs.WasPrimaryDownFixed && m_IsCharging) {
-            Charge();
-        }
-        else if (m_Inputs.WasPrimaryReleasedFixed && m_IsCharging) {
+        else if ((m_Inputs.WasPrimaryReleasedFixed || m_Inputs.WasSecondaryPressedFixed) && m_IsCharging) {
             ReleaseCharge();
         }
+        else if (m_IsCharging && !m_Inputs.WasSecondaryDownFixed) {
+            Charge();
+        }
+
+        m_BodyController.ApplyTorque(m_RotForce * m_Inputs.MoveValue);
     }
 
     private Vector2 GetChargeVector(out Vector2 dir) {
@@ -98,6 +103,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        dir *= Mathf.Clamp01(magnitude * 2f);
         return chargeVec;
     }
 
@@ -129,6 +135,16 @@ public class PlayerController : MonoBehaviour
 
         m_BodyController.ApplyForceOnAllMasses(m_ReleaseVector, ForceMode2D.Impulse);
         m_IsCharging = false;
+
+        StartCoroutine(nameof(ReleaseWait_Co));
+    }
+
+    private IEnumerator ReleaseWait_Co() {
+        m_IsWaitingAfterRelease = true;
+        
+        yield return m_ReleaseWait;
+
+        m_IsWaitingAfterRelease = false;
     }
 
     #endregion
@@ -138,7 +154,7 @@ public class PlayerController : MonoBehaviour
     private void EatTick() {
         if (m_Eatable == null)
             return;
-
+        //move this to eatable
         m_Eatable.Position = Vector2.Lerp(m_Eatable.Position, m_BodyController.AvgPosition, Time.deltaTime * m_EatenFollowSpeed);
         m_Eatable.Rotation = Mathf.Lerp(m_Eatable.Rotation, m_BodyController.PointMassesDeviation, Time.deltaTime * m_EatenFollowSpeed);
 
@@ -191,6 +207,7 @@ public class PlayerController : MonoBehaviour
 
     #region Not Currently Using
 
+    private LayerMask m_EdgesLayer => GameManager.Instance.GameConfiguration.PlayerCollisionLayer;
     private GameObject m_HookObj;
     private GameObject m_HookPrefab;
     private float m_HookForce;

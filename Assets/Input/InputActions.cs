@@ -37,22 +37,13 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""MousePos"",
+                    ""name"": ""CursorPos"",
                     ""type"": ""Value"",
                     ""id"": ""3269daf9-29c8-4898-be58-7e562c96b24b"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""SecondaryAction"",
-                    ""type"": ""Button"",
-                    ""id"": ""214af852-533a-4b3d-bbd5-c98494bdadb4"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""Direction"",
@@ -94,29 +85,18 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Desktop"",
-                    ""action"": ""MousePos"",
+                    ""action"": ""CursorPos"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""e018bd2e-8ea9-4fce-a140-7d7523f91386"",
-                    ""path"": ""<Touchscreen>/position"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mobile"",
-                    ""action"": ""MousePos"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""420a7932-3121-442e-baed-31acfa86c899"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Desktop"",
-                    ""action"": ""SecondaryAction"",
+                    ""action"": ""CursorPos"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -211,8 +191,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         // Movement
         m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
         m_Movement_PrimaryAction = m_Movement.FindAction("PrimaryAction", throwIfNotFound: true);
-        m_Movement_MousePos = m_Movement.FindAction("MousePos", throwIfNotFound: true);
-        m_Movement_SecondaryAction = m_Movement.FindAction("SecondaryAction", throwIfNotFound: true);
+        m_Movement_CursorPos = m_Movement.FindAction("CursorPos", throwIfNotFound: true);
         m_Movement_Direction = m_Movement.FindAction("Direction", throwIfNotFound: true);
     }
 
@@ -276,16 +255,14 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Movement;
     private List<IMovementActions> m_MovementActionsCallbackInterfaces = new List<IMovementActions>();
     private readonly InputAction m_Movement_PrimaryAction;
-    private readonly InputAction m_Movement_MousePos;
-    private readonly InputAction m_Movement_SecondaryAction;
+    private readonly InputAction m_Movement_CursorPos;
     private readonly InputAction m_Movement_Direction;
     public struct MovementActions
     {
         private @InputActions m_Wrapper;
         public MovementActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @PrimaryAction => m_Wrapper.m_Movement_PrimaryAction;
-        public InputAction @MousePos => m_Wrapper.m_Movement_MousePos;
-        public InputAction @SecondaryAction => m_Wrapper.m_Movement_SecondaryAction;
+        public InputAction @CursorPos => m_Wrapper.m_Movement_CursorPos;
         public InputAction @Direction => m_Wrapper.m_Movement_Direction;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
@@ -299,12 +276,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @PrimaryAction.started += instance.OnPrimaryAction;
             @PrimaryAction.performed += instance.OnPrimaryAction;
             @PrimaryAction.canceled += instance.OnPrimaryAction;
-            @MousePos.started += instance.OnMousePos;
-            @MousePos.performed += instance.OnMousePos;
-            @MousePos.canceled += instance.OnMousePos;
-            @SecondaryAction.started += instance.OnSecondaryAction;
-            @SecondaryAction.performed += instance.OnSecondaryAction;
-            @SecondaryAction.canceled += instance.OnSecondaryAction;
+            @CursorPos.started += instance.OnCursorPos;
+            @CursorPos.performed += instance.OnCursorPos;
+            @CursorPos.canceled += instance.OnCursorPos;
             @Direction.started += instance.OnDirection;
             @Direction.performed += instance.OnDirection;
             @Direction.canceled += instance.OnDirection;
@@ -315,12 +289,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @PrimaryAction.started -= instance.OnPrimaryAction;
             @PrimaryAction.performed -= instance.OnPrimaryAction;
             @PrimaryAction.canceled -= instance.OnPrimaryAction;
-            @MousePos.started -= instance.OnMousePos;
-            @MousePos.performed -= instance.OnMousePos;
-            @MousePos.canceled -= instance.OnMousePos;
-            @SecondaryAction.started -= instance.OnSecondaryAction;
-            @SecondaryAction.performed -= instance.OnSecondaryAction;
-            @SecondaryAction.canceled -= instance.OnSecondaryAction;
+            @CursorPos.started -= instance.OnCursorPos;
+            @CursorPos.performed -= instance.OnCursorPos;
+            @CursorPos.canceled -= instance.OnCursorPos;
             @Direction.started -= instance.OnDirection;
             @Direction.performed -= instance.OnDirection;
             @Direction.canceled -= instance.OnDirection;
@@ -362,8 +333,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     public interface IMovementActions
     {
         void OnPrimaryAction(InputAction.CallbackContext context);
-        void OnMousePos(InputAction.CallbackContext context);
-        void OnSecondaryAction(InputAction.CallbackContext context);
+        void OnCursorPos(InputAction.CallbackContext context);
         void OnDirection(InputAction.CallbackContext context);
     }
 }

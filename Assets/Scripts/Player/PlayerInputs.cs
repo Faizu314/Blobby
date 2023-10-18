@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerInputs : MonoBehaviour {
 
@@ -35,6 +36,8 @@ public class PlayerInputs : MonoBehaviour {
     /// </summary>
     public bool WasSecondaryReleasedFixed { get; private set; }
 
+    public float MoveValue { get; private set; }
+
 
     /// <summary>
     /// Vector from cursor pos when primary was pressed and held to current cursor pos in viewport space.
@@ -42,12 +45,14 @@ public class PlayerInputs : MonoBehaviour {
     public Vector2 DragVector { get; private set; }
     public Vector2 DragVectorFixed { get; private set; }
 
-    private InputManager.GlobalInputs m_Inputs;
+    private InputManager.HardwareInputs m_HardwareInputs;
+    private InputManager.InterfaceInputs m_InterfaceInputs;
     private Vector2 m_InitialDragPos;
     private Vector2 m_InitialDragPosFixed;
 
     private void Start() {
-        m_Inputs = InputManager.Instance.globalInputs;
+        m_HardwareInputs = InputManager.Instance.hardwareInputs;
+        m_InterfaceInputs = InputManager.Instance.interfaceInputs;
 
         StartCoroutine(nameof(LateFixedUpdate));
     }
@@ -56,6 +61,8 @@ public class PlayerInputs : MonoBehaviour {
         GetFrameButtons();
         CacheFixedButtons();
         SetDragVector();
+
+        MoveValue = m_InterfaceInputs.PrimaryJoyStick.x;
     }
 
     private void FixedUpdate() {
@@ -71,21 +78,29 @@ public class PlayerInputs : MonoBehaviour {
     }
 
     private void GetFrameButtons() {
-        DidPrimaryPress = !IsPrimaryDown && m_Inputs.PrimaryAction;
-        DidPrimaryRelease = IsPrimaryDown && !m_Inputs.PrimaryAction;
-        DidSecondaryPress = !IsSecondaryDown && m_Inputs.SecondaryAction;
-        DidSecondaryRelease = IsSecondaryDown && !m_Inputs.SecondaryAction;
-        IsPrimaryDown = m_Inputs.PrimaryAction;
-        IsSecondaryDown = m_Inputs.SecondaryAction;
+        if (!(IsPrimaryDown || IsSecondaryDown) && m_HardwareInputs.PrimaryActionDown && !EventSystem.current.IsPointerOverGameObject()) {
+            DidPrimaryPress = m_HardwareInputs.CursorPos.x >= 0.5f;
+            IsPrimaryDown = DidPrimaryPress;
+            DidSecondaryPress = !DidPrimaryPress;
+            IsSecondaryDown = !DidPrimaryPress;
+        }
+        else if ((IsPrimaryDown || IsSecondaryDown) && !m_HardwareInputs.PrimaryAction && !EventSystem.current.IsPointerOverGameObject()) {
+            DidPrimaryRelease = IsPrimaryDown;
+            DidSecondaryRelease = IsSecondaryDown;
+            IsPrimaryDown = IsSecondaryDown = false;
+        }
+        else {
+            DidPrimaryPress = DidSecondaryPress = DidPrimaryRelease = DidSecondaryRelease = false;
+        }
     }
 
     private void CacheFixedButtons() {
-        WasPrimaryPressedFixed = !WasPrimaryDownFixed && m_Inputs.PrimaryAction || WasPrimaryPressedFixed;
-        WasPrimaryReleasedFixed = WasPrimaryDownFixed && !m_Inputs.PrimaryAction || WasPrimaryReleasedFixed;
-        WasSecondaryPressedFixed = !WasSecondaryDownFixed && m_Inputs.SecondaryAction || WasSecondaryPressedFixed;
-        WasSecondaryReleasedFixed = WasSecondaryDownFixed && !m_Inputs.SecondaryAction || WasSecondaryReleasedFixed;
-        WasPrimaryDownFixed |= m_Inputs.PrimaryAction;
-        WasSecondaryDownFixed |= m_Inputs.SecondaryAction;
+        WasPrimaryPressedFixed = !WasPrimaryDownFixed && IsPrimaryDown || WasPrimaryPressedFixed;
+        WasPrimaryReleasedFixed = WasPrimaryDownFixed && !IsPrimaryDown || WasPrimaryReleasedFixed;
+        WasSecondaryPressedFixed = !WasSecondaryDownFixed && IsSecondaryDown || WasSecondaryPressedFixed;
+        WasSecondaryReleasedFixed = WasSecondaryDownFixed && !IsSecondaryDown || WasSecondaryReleasedFixed;
+        WasPrimaryDownFixed |= IsPrimaryDown;
+        WasSecondaryDownFixed |= IsSecondaryDown;
 
         if (WasPrimaryPressedFixed || WasPrimaryDownFixed)
             WasPrimaryReleasedFixed = false;
@@ -94,21 +109,21 @@ public class PlayerInputs : MonoBehaviour {
     }
 
     private void ResetCachedButtons() {
-        WasPrimaryPressedFixed = !WasPrimaryDownFixed && m_Inputs.PrimaryAction;
-        WasPrimaryReleasedFixed = WasPrimaryDownFixed && !m_Inputs.PrimaryAction;
-        WasSecondaryPressedFixed = !WasSecondaryDownFixed && m_Inputs.SecondaryAction;
-        WasSecondaryReleasedFixed = WasSecondaryDownFixed && !m_Inputs.SecondaryAction;
-        WasPrimaryDownFixed = m_Inputs.PrimaryAction;
-        WasSecondaryDownFixed = m_Inputs.SecondaryAction;
+        WasPrimaryPressedFixed = !WasPrimaryDownFixed && IsPrimaryDown;
+        WasPrimaryReleasedFixed = WasPrimaryDownFixed && !m_HardwareInputs.PrimaryAction;
+        WasSecondaryPressedFixed = !WasSecondaryDownFixed && IsSecondaryDown;
+        WasSecondaryReleasedFixed = WasSecondaryDownFixed && !m_HardwareInputs.PrimaryAction;
+        WasPrimaryDownFixed = m_HardwareInputs.PrimaryAction && IsPrimaryDown;
+        WasSecondaryDownFixed = m_HardwareInputs.PrimaryAction && IsSecondaryDown;
     }
 
     private void SetDragVector() {
         var dragVector = Vector2.zero;
 
         if (DidPrimaryPress)
-            m_InitialDragPos = m_Inputs.CursorPos;
+            m_InitialDragPos = m_HardwareInputs.CursorPos;
         else if (IsPrimaryDown)
-            dragVector = m_Inputs.CursorPos - m_InitialDragPos;
+            dragVector = m_HardwareInputs.CursorPos - m_InitialDragPos;
 
         dragVector.x = Mathf.Clamp(dragVector.x, -1f, 1f);
         dragVector.y = Mathf.Clamp(dragVector.y, -1f, 1f);
@@ -120,9 +135,9 @@ public class PlayerInputs : MonoBehaviour {
         var dragVectorFixed = Vector2.zero;
 
         if (WasPrimaryPressedFixed)
-            m_InitialDragPosFixed = m_Inputs.CursorPos;
+            m_InitialDragPosFixed = m_HardwareInputs.CursorPos;
         else if (WasPrimaryDownFixed)
-            dragVectorFixed = m_Inputs.CursorPos - m_InitialDragPosFixed;
+            dragVectorFixed = m_HardwareInputs.CursorPos - m_InitialDragPosFixed;
 
         dragVectorFixed.x = Mathf.Clamp(dragVectorFixed.x, -1f, 1f);
         dragVectorFixed.y = Mathf.Clamp(dragVectorFixed.y, -1f, 1f);
